@@ -1,0 +1,69 @@
+.select-button > select {
+   
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none; /* Bỏ viền */
+    border-radius: 50px; /* Bo góc tròn cho các nút */
+    background-color: #1E90FF; /* Màu nền xanh */
+    color: white; /* Màu chữ trắng */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+  }
+  .select-button>div > select >option{
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none; /* Bỏ viền */
+    border-radius: 20px; /* Bo góc tròn cho các nút */
+    background-color: #fcfdfe; /* Màu nền xanh */
+    color: rgb(6, 6, 6); /* Màu chữ trắng */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+  }
+  
+  .select-button > div >button{
+    
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none; /* Bỏ viền */
+    border-radius: 20px; /* Bo góc tròn cho các nút */
+    background-color:  #1E90FF; /* Màu nền xanh */
+    color: rgb(249, 243, 243); /* Màu chữ trắng */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+  }
+  .select-button > div>div>div >button{
+    
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none; /* Bỏ viền */
+    border-radius: 20px; /* Bo góc tròn cho các nút */
+    background-color:  #1E90FF; /* Màu nền xanh */
+    color: rgb(6, 6, 6); /* Màu chữ trắng */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+  }
+  .select-button > div>select{
+    
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none; /* Bỏ viền */
+    border-radius: 20px; /* Bo góc tròn cho các nút */
+    background-color:  #1E90FF; /* Màu nền xanh */
+    color: rgb(6, 6, 6); /* Màu chữ trắng */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+  }
+  
+  .select-button label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .select-button input {
+    height: 50px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+ 

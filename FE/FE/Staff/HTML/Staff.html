@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff-FLORENTINO</title>
+    <link rel="icon" href="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png">
+    <link rel="stylesheet" href="/FE/Admin/CSS/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/FE/Member/CSS/style.css">
+    <link rel="stylesheet" href="/FE/Admin/CSS/AdminRoom.css">
+    <link rel="stylesheet" href="/FE/Admin/CSS/AdminPrint.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script defer src="/FE/Admin/JS/AdminBooking.js"></script>
+    <!-- <script defer src="/FE/Admin/JS/ModalQLDP.js"></script> -->
+    <script defer src="/FE/Admin/JS/AdminReport.js"></script>
+    <script defer src="/FE/Admin/JS/main.js"></script>
+    <script defer src="/FE/Admin/JS/AdminBillService.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .dashboard-container {
+            padding: 20px;
+        }
+
+        .dashboard-cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            width: 30%;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card h2 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .chart-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button2>
+                    <a href="#" class="btn2"><span class="spn2" id="btnLogin" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasDarkNavbar">HELLO !</span></a>
+                </button2>
+            </div>
+            <ul>
+                <li class="tab-button active" data-tab="booking"><i class="fas fa-bed"></i> Quản lý đặt phòng</li>
+                <li class="tab-button" data-tab="bill"><i class="fas fa-file-invoice"></i> Quản lý hóa đơn</li>
+                <li class="tab-button" data-tab="billService"><i class="fas fa-concierge-bell"></i> Quản lý dịch vụ đặt
+                </li>
+                <li class="tab-button" data-tab="room"><i class="fas fa-door-closed"></i> Tìm phòng trống</li>
+                <li class="tab-button" data-tab="staffshift"><i class="fas fa-calendar-alt"></i> Xem lịch làm việc</li>
+            </ul>
+
+        </aside>
+
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="Hello">Xin chào !</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+                    id="Closebtn"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link tab-button active" href="#" aria-current="page" data-tab="infor-user"
+                            id="if1">Thông tin
+                            tài khoản</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tab-button active" href="#" aria-current="page" data-tab="ResetPassword"
+                            id="if12">Đổi mật khẩu</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/FE/Authen/Login.html">Đăng xuất </a>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            function getUserNameFromToken111() {
+                const token = localStorage.getItem('token');
+
+                try {
+                    // Token consists of 3 parts separated by dots: Header.Payload.Signature
+                    const payloadBase64 = token.split('.')[1]; // Get the Payload part (second part)
+                    const decodedData = atob(payloadBase64); // Decode Base64
+
+                    // Decode as UTF-8 to handle special characters
+                    const payload = JSON.parse(new TextDecoder('utf-8').decode(new Uint8Array([...decodedData].map(char => char.charCodeAt(0)))));
+                    return payload.FullName; // Return the "FullName" field
+                } catch (error) {
+                    console.error('Error decoding token:', error);
+                    return null;
+                }
+            }
+
+            const hello = document.getElementById('Hello')
+            if (localStorage.getItem('token')) {
+                hello.textContent = `Xin chào ${getUserNameFromToken111()} !`;
+            } else {
+                hello.textContent = "Xin chào quý khách !"
+            }
+        </script>
+
+
+
+        <div id="infor-user" class="tab">
+            <div class="main-content">
+                <h2>Chỉnh sửa thông tin cá nhân</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="FullName1" class="form-label">Họ và tên</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Full-Name2" placeholder="Nhập họ và tên">
+                            <button class="btn btn-danger btn-sm " id="update-FullName" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="NumberPhone2" class="form-label">Số điện thoại</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-control" id="NumberPhone2" placeholder="Nhập số điện thoại">
+                            <button class="btn btn-danger btn-sm" id="update-NumberPhone" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <!-- <div class="mb-3">
+                    <label for="Card2" class="form-label">Số căn cước công dân</label>
+                    <div class="input-group">
+                        <input type="tel" class="form-control" id="Card2" placeholder="Nhập số căn cước công dân">
+                        <button class="btn btn-danger btn-sm" id="update-Card2" type="button">Sửa</button>
+                    </div>
+                </div> -->
+                    <div class="mb-3">
+                        <label for="Email2" class="form-label">Email</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="Email2" placeholder="Nhập email" required>
+                            <button class="btn btn-danger btn-sm" id="update-Email" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address2" class="form-label">Địa chỉ</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Address2" placeholder="Nhập địa chỉ">
+                            <button class="btn btn-danger btn-sm" id="update-Address" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="UrlAvatar2">Ảnh Đại Diện:</label>
+                        <div class="input-group">
+                            <input type="file" id="UrlAvatar2" name="urlAvatar" accept="image/*"
+                                onchange="previewImage();">
+                            <button class="btn btn-danger btn-sm" id="update-urlAvt" type="button">Sửa</button>
+                        </div>
+                        <img id="imgAvtt" src="#" alt="Ảnh đại diện"
+                            style="display: none; max-width: 50px; max-height: 50px;">
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            getUserNameFromToken2(); // Gọi hàm này khi trang được tải để kiểm tra có token và hiển thị ảnh
+                        });
+
+                        function previewImage() {
+                            var file = document.querySelector('input[type=file]').files[0];
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                var img = document.getElementById('imgAvtt');
+                                img.src = reader.result;
+                                img.style.display = 'block';
+                            }
+
+                            if (file) {
+                                reader.readAsDataURL(file);
+                            } else {
+                                getUserNameFromToken2(); // Gọi hàm này nếu không có file được chọn
+                            }
+                        }
+
+                        function getUserNameFromToken2() {
+                            const token = localStorage.getItem('token');
+                            if (!token) {
+                                document.getElementById("imgAvtt").style.display = "none";
+                                return "Đăng nhập";
+                            }
+
+                            try {
+                                const payloadBase64 = token.split('.')[1];
+                                const payload = JSON.parse(atob(payloadBase64));
+                                fetchImageUrl2(payload.Id);
+                                return payload.Username;
+                            } catch (error) {
+                                console.error('Lỗi khi giải mã token:', error);
+                                return null;
+                            }
+                        }
+
+                        async function fetchImageUrl2(Id) {
+                            try {
+                                let response = await fetch(`https://localhost:7286/GetUrlAvt${Id}`);
+                                let imageUrl = await response.text();
+                                document.getElementById("imgAvtt").src = imageUrl;
+                                document.getElementById("imgAvtt").style.display = "block";
+                            } catch (error) {
+                                console.error('There was a problem with the fetch operation:', error);
+                            }
+                        }
+                    </script>
+
+
+
+                    <div class="mb-3">
+                        <label for="Gender" class="form-label">Giới tính</label>
+                        <div class="input-group">
+                            <select id="Gender">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                            <button class="btn btn-danger btn-sm" id="update-Gender" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="BtnupdateinforUserbyCustomer">Cập nhật thông
+                        tin</button>
+                </form>
+
+            </div>
+        </div>
+
+
+        <!-- Resetpass -->
+        <div id="ResetPassword" class="tab ">
+            <div class="main-content">
+                <h2>Đổi mật khẩu</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="PassOld" class="form-label">Mật khẩu cũ</label>
+
+                        <input type="text" class="form-control" id="PassOld" placeholder="Nhập mật khẩu cũ">
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="PassNew" class="form-label">Mật khẩu mới</label>
+
+                        <input type="text" class="form-control" id="PassNew" placeholder="Nhập mật khẩu mới">
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="PassNewOk" class="form-label">Nhập lại mật khẩu mới</label>
+
+                        <input type="text" class="form-control" id="PassNewOk" placeholder="Nhập lại mật khẩu mới">
+
+
+                    </div>
+                    <button class="btn btn-primary" id="BtnUpdateResetPass">Ok</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.getElementById("BtnUpdateResetPass").addEventListener("click", function (event) {
+                event.preventDefault();  // Ngừng hành động mặc định của nút submit
+
+                function getUserIdFromToken11() {
+                    const token = localStorage.getItem('token');
+                    try {
+                        // Token gồm 3 phần ngăn cách bởi dấu chấm: Header.Payload.Signature
+                        const payloadBase64 = token.split('.')[1]; // Lấy phần Payload (phần thứ 2)
+                        const payload = JSON.parse(atob(payloadBase64)); // Giải mã Base64 và parse thành JSON
+                        return payload.Id; // Trả về trường "Username"
+                    } catch (error) {
+                        console.error('Lỗi khi giải mã token:', error);
+                        return null;
+                    }
+                }
+
+
+                // Lấy giá trị từ các trường nhập liệu
+                const passOld = document.getElementById("PassOld").value;
+                const passNew = document.getElementById("PassNew").value;
+                const passConfirm = document.getElementById("PassNewOk").value;
+
+                // Kiểm tra nếu mật khẩu cũ và mật khẩu mới nhập đúng
+                if (passOld === "" || passNew === "" || passConfirm === "") {
+                    alert("Vui lòng điền đầy đủ thông tin.");
+                    return;
+                }
+
+                if (passNew !== passConfirm) {
+                    alert("Mật khẩu mới và xác nhận mật khẩu mới không khớp.");
+                    return;
+                }
+
+                // Tạo đối tượng dữ liệu cần gửi đi
+                const data = {
+                    userId: getUserIdFromToken11(),
+                    passOld: passOld,
+                    passNew: passNew,
+                    passComfirm: passConfirm
+                };
+
+                // Gọi API để đổi mật khẩu
+                fetch("https://localhost:7286/ChangePassByUser", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.status == 200) {
+                            alert(result.message);
+                        } else {
+                            alert(result.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Lỗi:", error);
+                        alert("Lỗi kết nối. Vui lòng thử lại sau.");
+                    });
+            });
+
+        </script>
+
+
+
+
+
+
+        <!-- Main Content -->
+
+        <div id="booking" class="tab active">
+            <div class="main-content">
+                <h2 id="section-title">Quản lý đặt phòng</h2>
+                <div class="select-button">
+                    <!-- Button to Open Modal -->
+                    <button type="button" class="select-button-child " data-bs-toggle="modal"
+                        data-bs-target="#bookingModal">
+                        Thêm đặt phòng
+                    </button>
+                </div>
+                <h3>Danh sách đặt phòng </h3>
+                <div class="search-bar mb-3">
+                    <input type="text" id="searchInputBooking" class="form-control" placeholder="Tìm kiếm theo ID">
+                </div>
+                <div id="tab-content">
+                    <table class="table table-striped table-bordered table-rounded" style=" font-size: 12px"
+                        id="bookingTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Hóa đơn ID</th>
+                                <th>Tên khách hàng</th>
+                                <th>Các loại phòng</th>
+                                <th>Các phòng</th>
+                                <th>Ngày nhận phòng</th>
+                                <th>Ngày trả phòng</th>
+                                <th>Số trẻ em</th>
+                                <th>Số điện thoại</th>
+                                <th>Số căn cước</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dữ liệu sẽ được thêm vào đây -->
+                        </tbody>
+                    </table>
+
+                    <!-- Phân trang đơn giản -->
+                    <div class="pagination-controls d-flex align-items-center container-btn">
+                        <button class="btn btn-primary btN-pre" id="nextBtn" onclick="nextPage()">Trang sau</button>
+
+                        <span id="pageNum" class="pageCSS">1</span>
+                        <button class="btn btn-primary btN-pre" id="prevBtn" onclick="prevPage()">Trang trước</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Modal Đặt Phòng -->
+        <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="bookingModalLabel">Đặt Phòng Khách Sạn</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="bookingForm">
+                            <!-- Họ và Tên -->
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Họ và tên *</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Họ và tên" required>
+                            </div>
+
+                            <!-- Số điện thoại -->
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Số điện thoại *</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Số điện thoại" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cardNumber2" class="form-label">Số căn cước *</label>
+                                <input type="tel" class="form-control" id="cardNumber2" placeholder="Số căn cước"
+                                    required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="email" placeholder="ex: myname@gmail.com"
+                                    required>
+                            </div>
+
+                            <!-- Chọn Loại Phòng -->
+                            <div class="mb-3">
+                                <label class="form-label">Chọn loại phòng *</label>
+                                <div id="roomListContainer" class="dropdown-section">
+                                    <!-- Room types will be populated by JavaScript -->
+                                </div>
+                            </div>
+
+                            <!-- Người lớn và Trẻ em -->
+                            <div class="mb-3" style="display: none;">
+                                <label class="form-label">Người lớn</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-outline-secondary" id="adultMinus">-</button>
+                                    <input type="number" class="form-control text-center" id="adultCount" value="0"
+                                        min="0" readonly>
+                                    <button type="button" class="btn btn-outline-secondary" id="adultPlus">+</button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Trẻ em</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-outline-secondary" id="childMinus">-</button>
+                                    <input type="number" class="form-control text-center" id="childCount" value="0"
+                                        min="0" readonly>
+                                    <button type="button" class="btn btn-outline-secondary" id="childPlus">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Ngày nhận và Ngày trả -->
+                            <div class="mb-3">
+                                <label for="checkInDate" class="form-label">Ngày nhận phòng *</label>
+                                <input type="date" class="form-control" id="checkInDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="checkOutDate" class="form-label">Ngày trả phòng *</label>
+                                <input type="date" class="form-control" id="checkOutDate" required>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                <button type="submit" id="ComfirmBooking" class="btn btn-primary">Đặt phòng</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="bill" class="tab">
+            <div class="main-content">
+                <h2 id="section-title">Quản lý hóa đơn</h2>
+                <h3>Danh sách hóa đơn</h3>
+                <div class="search-bar mb-3">
+                    <input type="text" id="searchInputBill" class="form-control" placeholder="Tìm kiếm theo ID">
+                </div>
+                <div id="tab-content">
+                    <table class="table table-striped table-bordered table-rounded" id="billTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Đặt phòng ID</th>
+                                <th>Tổng tiền</th>
+                                <th>Ngày lập hóa đơn</th>
+                                <th>Đã thanh toán</th>
+                                <th>Nội dung đã thanh toán</th>
+                                <th>Tổng Nội dung thanh toán</th>
+                                <th>Trạng thái</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                        </tbody>
+                    </table>
+
+                    <div class="pagination-controls d-flex align-items-center container-btn">
+                        <button class="btn btn-primary btN-pre" id="nextBtnBill" onclick="nextInvoicePage()">Trang
+                            sau</button>
+                        <span id="pageNumBill" class="pageCSS">1</span>
+                        <button class="btn btn-primary btN-pre" id="prevBtnBill" onclick="prevInvoicePage()">Trang
+                            trước</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="services" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý Dịch vụ</h2>
+            <div class="select-button">
+                <button class="select-button tab-button" data-tab="billService">Dịch vụ khách đặt</button>
+                <div class="select-button-child" style="display: block;">
+                    <button class="select-button tab-button" data-tab="TypeService">Quản lý loại dịch vụ</button>
+                    <button type="button" id="addServiceButton" class="btn btn-primary" data-toggle="modal"
+                        data-target="#addServiceModal">
+                        Thêm dịch vụ
+                    </button>
+                </div>
+            </div>
+            <h3>Danh sách dịch vụ</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="serviceTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Loại dịch vụ</th>
+                            <th>Giá tiền</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu dịch vụ sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnService" onclick="nextServicePage()">Trang
+                        sau</button>
+                    <span id="pageNumService" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnService" onclick="prevServicePage()">Trang
+                        trước</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Service Modal -->
+    <div class="modal fade" tabindex="-1" aria-labelledby="addServiceModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addServiceModalLabel">Thêm Dịch Vụ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addServiceForm">
+                        <div class="mb-3">
+                            <label for="serviceName" class="form-label">Tên dịch vụ</label>
+                            <input type="text" class="form-control" id="serviceName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="servicePrice" class="form-label">Giá tiền</label>
+                            <input type="number" class="form-control" id="servicePrice" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="serviceType" class="form-label">Loại dịch vụ</label>
+                            <select id="serviceType" class="form-control" required>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm dịch vụ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="billService" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý đặt dịch vụ</h2>
+            <div class="select-button">
+
+                <select id="billserviceChoose" onchange="getListBillService()">
+                    <option value="All">Tất cả các đơn</option>
+                    <option value="NotOk">Đơn chưa hoàn thành</option>
+                    <option value="Ok">Đơn đã hoàn thành</option>
+                </select>
+                <div class="search-bar mb-3">
+                    <input type="text" id="searchInputBookingService" class="form-control"
+                        placeholder="Tìm kiếm theo ID">
+                </div>
+            </div>
+
+
+            <h3>Danh sách dịch vụ đặt</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="billServiceTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Hóa đơn Id</th>
+                            <th>Phòng đặt</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Số lượng</th>
+                            <th>Thời gian đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnBillService"
+                        onclick="nextBillServicePage()">Trang
+                        sau</button>
+                    <span id="pageNumBillService" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnBillService"
+                        onclick="prevBillServicePage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="room" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý phòng</h2>
+            <div class="select-button">
+                <div style="display: flex;">
+                    <select id="room-filter" onchange="getRoomTypes()">
+                        <option value="all">Tất cả các phòng</option>
+                    </select>
+                </div>
+                <div class="select-button-child">
+                    <button id="search" class="select-button" onclick="SearchRoomNull()">Tìm kiếm phòng trống </button>
+
+                    <div id="TabSearch" style="display: none;">
+                        <label for="checkin-date" style="margin-left: 10px;">Ngày đến:</label>
+                        <input type="date" id="checkin-date" name="checkin-date">
+
+                        <label for="checkout-date" style="margin-left: 20px;">Ngày đi:</label>
+                        <input type="date" id="checkout-date" name="checkout-date">
+                        <div style="display: flex;">
+                            <button id="SearchReal" class="select-button" onclick="Search()">Tìm </button>
+                            <button id="Detroy" class="select-button" onclick="DetroySearchRoomNull()">Hủy </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <h3>Danh sách phòng</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="roomTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên phòng</th>
+                            <th>Loại phòng</th>
+                            <th>Giá ngày</th>
+                            <!-- <th>Chức năng</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnRoom" onclick="nextRoomPage()">Trang
+                        sau</button>
+                    <span id="pageNumRoom" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnRoom" onclick="prevRoomPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="staffshift" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Lịch làm việc</h2>
+
+
+
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputCustomer" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="staffShiftTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày</th>
+                            <th>Giờ bắt đầu</th>
+                            <th>Giờ kết thúc</th>
+                            <th>Ca làm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnStafShift" onclick="nextStafShiftPage()">Trang
+                        sau</button>
+                    <span id="pageNumStafShift" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnStafShift" onclick="prevStafShiftPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="staff" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý nhân viên</h2>
+            <div class="select-button">
+
+                <!-- <button class="select-button">Tất cả phòng </button>
+                <button class="select-button">Đơn chưa hoàn thành </button>
+                <button class="select-button">Đơn đã hoàn thành </button>  -->
+                <div class="select-button-child">
+                    <button>Quản lý lịch làm việc</button>
+
+                </div>
+            </div>
+            <h3>Danh sách nhân viên</h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputStaff" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="staffTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Giới tính</th>
+                            <th>Chức năng</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnStaff" onclick="nextStaffPage()">Trang
+                        sau</button>
+                    <span id="pageNumStaff" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnStaff" onclick="prevStaffPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="editModalBooking" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Chỉnh sửa thông tin đặt phòng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">Tên khách hàng</label>
+                            <input type="text" class="form-control" id="customerName" placeholder="Nhập tên khách hàng">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerNumberCard" class="form-label">Số căn cước</label>
+                            <input type="text" class="form-control" id="customerNumberCard"
+                                placeholder="Nhập số căn cước">
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label for="checkInDate" class="form-label">Ngày nhận phòng</label>
+                            <input type="date" class="form-control" id="checkInDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="checkOutDate" class="form-label">Ngày trả phòng</label>
+                            <input type="date" class="form-control" id="checkOutDate">
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="customerPhone" placeholder="Nhập số điện thoại">
+                        </div>
+                        <button id="updateBookingv1" class="btn btn-primary">Lưu thay đổi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+
+
+<script src="/FE/Staff/JS/Staff-StaffShift.js"></script>
+<script src="/FE/Admin/JS/AdminBill.js"></script>
+<script src="/FE/Staff/JS/Staff-Booking.js"></script>
+<script src="/FE/Admin/JS/AdminService.js"></script>
+<script src="/FE/Staff/JS/StaffRoom.js"></script>
+<script src="/FE/Staff/JS/updateinforUserbyStaff.js"></script>
+
+
+</html>

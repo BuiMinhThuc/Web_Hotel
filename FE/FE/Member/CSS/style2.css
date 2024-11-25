@@ -1,0 +1,232 @@
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+}
+
+.dropdown-toggle {
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    display: none; /* Ẩn mặc định */
+    position: absolute;
+    /* Đặt ngay dưới toggle */
+     /* Căn phải */
+     
+    transform: translateY(-48px);  /* Dịch chuyển lên một chút để khít với nút toggle */
+   left: -250px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 15px;
+    border-radius: 8px;
+    width: auto; /* Điều chỉnh theo nội dung bên trong */
+}
+
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+}
+
+.dropdown-menu.active {
+    display: block; /* Show when active */
+}
+
+
+.dropdown-item {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.number-control {
+    display: flex;
+    align-items: center;
+}
+
+.number-control button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.number-control input {
+    width: 43px;
+    text-align: center;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+
+
+    #summary {
+        font-size: auto; /* Đặt lại cỡ chữ giống các phần khác, có thể tùy chỉnh cho phù hợp */
+        color: #000; /* Đặt lại màu chữ cho đồng bộ (ví dụ: màu đen) */
+        font-weight: normal; /* Đặt lại trọng lượng chữ để giống với các thành phần còn lại */
+    }
+    
+
+
+.dropdown-section {
+    margin-bottom: 15px;
+}
+
+.container-news{
+    /* background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1728983774/dnpoibziscezjxbi0upz.webp'); */
+    background-color: #000;
+}
+/* General Styling */
+.Feedback-Container {
+    /* background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1728983774/dnpoibziscezjxbi0upz.webp'); */
+    background-size: cover;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+#Feedback.tab-content.active {
+    background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1730953894/h4_szpops.webp');
+    /* background-size: cover;
+    background-position: center; */
+    /* margin: 30 auto; */
+}
+
+.contact-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Review Form */
+.review-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+textarea {
+    width: calc(100% - 200px);
+    height: 60px;
+    resize: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+.send-button {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+
+/* Stars Styling */
+.stars {
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    color: #ffd700;
+}
+
+.stars span {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.stars span:hover {
+    transform: scale(1.2);
+}
+
+/* Review List */
+.review-list {
+    margin-top: 20px;
+}
+
+.review-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.review-item:hover {
+    transform: translateY(-5px);
+}
+
+.user-photo>img {
+    width: 60px;
+    height: 60px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.review-content {
+    flex: 1;
+}
+
+.review-content strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.review-content p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.rating {
+    font-size: 16px;
+    color: #ffd700;
+    margin-top: 5px;
+}

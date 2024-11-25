@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login-Hotels</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1730953894/h4_szpops.webp');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #eye i {
+      padding-right: 0;
+      cursor: pointer;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    #actions a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    #actions a:hover {
+      text-decoration: underline;
+    }
+
+    #error-message {
+      color: red;
+      margin-top: 15px;
+    }
+
+    .error {
+      color: #4CAF50;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    #loading {
+      display: none;
+      font-size: 18px;
+      color: #4CAF50;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #loading::before {
+      content: '';
+      border: 5px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 5px solid #4CAF50;
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      animation: spin 2s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <link rel="icon" href="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png"
+    type="image/png">
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="header">
+      <img src="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png" alt="Logo"
+        class="logo">
+      <h2 id="click">Đăng nhập</h2>
+    </div>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" required>
+        <div id="eye">
+          <i for="password"></i>
+        </div>
+
+      
+      </div>
+      <button type="submit" >Đăng nhập</button>
+    </form>
+
+    <div id="actions">
+      <a href="/FE/Authen/GetOtp.html" id="forgot-password">Quên mật khẩu?</a>
+      <a href="/FE/Authen/Register.html" id="register">Đăng ký</a>
+    </div>
+    <div id="error-message"></div>
+    <div id="loading">Đang xử lý, vui lòng chờ...</div>
+  </div>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginForm = document.getElementById('login-form');
+      const errorMessage = document.getElementById('error-message');
+      const loading = document.getElementById('loading');
+      const next1 = document.getElementById('click')
+
+      next1.addEventListener('click', async function (event) {
+        if(localStorage.getItem('token')){
+          localStorage.removeItem('token')
+          window.location.href="/FE/Member/HTML/Home.html"
+        }else
+          window.location.href="/FE/Member/HTML/Home.html"
+
+
+      });
+
+
+
+      // Xử lý sự kiện submit form
+      loginForm.addEventListener('submit', async function (event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+        //Nếu còn token thì xóa
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Hiển thị hiệu ứng loading
+        loading.style.display = 'block';
+        errorMessage.innerText = '';  // Xóa thông báo cũ
+
+        // Kiểm tra nếu không có tên người dùng hoặc mật khẩu
+        if (!username || !password) {
+          loading.style.display = 'none';
+          errorMessage.textContent = 'Vui lòng nhập tên đăng nhập và mật khẩu.';
+          return;
+        }
+
+        try {
+          const response = await fetch('https://localhost:7286/Login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+          });
+
+          const result = await response.json();
+
+          if (result.status === 200) {
+            handleSuccessResponse(result);
+          } else {
+            handleErrorResponse(result);
+          }
+        } catch (error) {
+          handleNetworkError(error);
+        }
+      });
+
+      function handleSuccessResponse(result) {
+        if (result.status === 200 && result.data.accessToken) {
+          loading.textContent = 'Đang chuyển đến trang...';
+          if (localStorage.getItem('token')) {
+            localStorage.removeItem('token')
+            localStorage.setItem('token',result.data.accessToken)
+            const Role = getUserRoleFromToken();
+            if (Role == "Member")
+              window.location.href = '/FE/Member/HTML/Home.html';
+            if (Role == "Admin")
+            window.location.href = '/FE/Admin/HTML/admin.html';
+            if (Role == "Staff")
+            window.location.href = '/FE/Staff/HTML/Staff.html';
+          } else {
+            localStorage.setItem('token',result.data.accessToken)
+            const Role = getUserRoleFromToken();
+            if (Role == "Member")
+              window.location.href = '/FE/Member/HTML/Home.html';
+            if (Role == "Admin")
+              window.location.href = '/FE/Admin/HTML/admin.html';
+              if (Role == "Staff")
+              window.location.href = '/FE/Staff/HTML/Staff.html';
+          }
+        }
+      }
+
+
+      function handleErrorResponse(result) {
+        localStorage.setItem('username',document.getElementById('username').value.trim())
+        localStorage.setItem('password',document.getElementById('password').value.trim())
+        loading.style.display = 'none'; // Ẩn loading khi có lỗi
+        if (result.status === 400 && result.message === 'Tài khoản chưa được kích hoạt, vui lòng kiểm tra email và xác nhận ! !') {
+          const checkConfirm = confirm('Tài khoản chưa kích hoạt, bạn có muốn xác nhận email để kích hoạt tài khoản?');
+          if (checkConfirm) {
+            window.location.href = '/FE/Authen/ComfirmEmail.html';
+            return;
+          }
+        }
+        errorMessage.textContent = result.message || 'Đăng nhập không thành công. Vui lòng thử lại.';
+      }
+
+      function getUserRoleFromToken() {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          console.error('Không tìm thấy token');
+          return null;
+        }
+
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          return payload.role;
+        } catch (error) {
+          console.error('Lỗi khi giải mã token:', error);
+          return null;
+        }
+      }
+
+      function handleNetworkError(error) {
+        loading.style.display = 'none'; // Ẩn loading khi có lỗi mạng
+        errorMessage.textContent = 'Có lỗi xảy ra. Vui lòng thử lại.';
+        console.error('Network Error:', error);
+      }
+    });
+  </script>
+</body>
+
+</html>

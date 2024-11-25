@@ -1,0 +1,718 @@
+.hero {
+  background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1730953894/h4_szpops.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-form {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1000;
+  width: 300px;
+}
+
+.nav {
+  background: rgba(0, 0, 0, 0.9);
+
+}
+
+.colortextnav {
+  color: rgb(255, 240, 251);
+}
+
+.navbar {
+  padding: 0;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-brand {
+  margin-right: 0;
+}
+
+.nav-link.active {
+  color: #0e0e0e;
+}
+
+.tab-content {
+  display: none;
+  /* Ẩn tất cả các tab */
+}
+
+.tab-content.active {
+  display: block;
+  /* Chỉ hiển thị tab có class 'active' */
+}
+
+.text-hover:hover {
+  color: rgb(54, 12, 219);
+}
+
+#imgAvt {
+  position: relative;
+  top: 32px;
+  /* Điều chỉnh giá trị này để di chuyển hình ảnh xuống */
+  height: 50px;
+  width: 50px;
+}
+
+
+
+.btn-shine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 48px;
+  color: #fff;
+  background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: "Poppins", sans-serif;
+
+}
+
+@-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-webkit-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@-o-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  60% {
+    background-position: 180px;
+  }
+
+  100% {
+    background-position: 180px;
+  }
+}
+
+/* From Uiverse.io by Navarog21 */
+/* From Uiverse.io by ShadowShahriar */
+.btnAvtLogin {
+  --border-radius: 15px;
+  --border-width: 4px;
+  appearance: none;
+  position: relative;
+  padding: 1em 2em;
+  border: 0;
+  background-color: #212121;
+  font-family: "Roboto", Arial, "Segoe UI", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  z-index: 2;
+  border-radius: 18px;
+}
+
+.btnAvtLogin::after {
+  --m-i: linear-gradient(#000, #000);
+  --m-o: content-box, padding-box;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: var(--border-width);
+  border-radius: var(--border-radius);
+  background-image: conic-gradient(#488cfb,
+      #29dbbc,
+      #ddf505,
+      #ff9f0e,
+      #e440bb,
+      #655adc,
+      #488cfb);
+  -webkit-mask-image: var(--m-i), var(--m-i);
+  mask-image: var(--m-i), var(--m-i);
+  -webkit-mask-origin: var(--m-o);
+  mask-origin: var(--m-o);
+  -webkit-mask-clip: var(--m-o);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  filter: hue-rotate(0);
+  animation: rotate-hue linear 500ms infinite;
+}
+
+@keyframes rotate-hue {
+  to {
+    filter: hue-rotate(1turn);
+  }
+}
+
+.btnAvtLogin,
+.btnAvtLogin::after {
+  box-sizing: border-box;
+}
+
+.btnAvtLogin:active {
+  --border-width: 5px;
+}
+
+/* Container của các thẻ phòng */
+.room-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  /* Khoảng cách giữa các thẻ */
+}
+
+/* Mỗi thẻ phòng */
+.room-card {
+  flex-basis: calc(25% - 20px);
+  /* Mỗi thẻ chiếm 25% chiều rộng */
+  box-sizing: border-box;
+  margin: 10px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  transition: transform 0.3s;
+}
+
+/* Đảm bảo mọi thẻ đều có cùng chiều cao */
+.room-card img {
+  width: 100%;
+  height: 200px;
+  /* Chiều cao cố định cho ảnh */
+  object-fit: cover;
+  /* Đảm bảo ảnh vừa khít với thẻ mà không bị méo */
+  border-radius: 10px;
+}
+
+.room-card .room-info {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.room-card .room-info h4 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.room-card .room-info p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Nút đặt phòng */
+.room-card .btn {
+  width: 100%;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.room-card .btn:hover {
+  background-color: #ff4d4d;
+}
+
+/* Hiệu ứng khi hover vào thẻ */
+.room-card:hover {
+  transform: translateY(-10px);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn-prev,
+.btn-next {
+  width: 36px;
+  /* Slightly smaller button size */
+  height: 36px;
+  border: none;
+  background-color: #d78bbb;
+  /* Bootstrap primary color */
+  color: #fff;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+  background-color: #dea0c7;
+  /* Darker color on hover */
+}
+
+
+
+.btn-view {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-book:hover {
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-book:active {
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(2px);
+}
+
+@media (max-width: 1200px) {
+  .room-card {
+    flex-basis: calc(33.33% - 20px);
+    /* 3 thẻ trên mỗi hàng */
+  }
+}
+
+@media (max-width: 768px) {
+  .room-card {
+    flex-basis: calc(50% - 20px);
+    /* 2 thẻ trên mỗi hàng */
+  }
+}
+
+@media (max-width: 480px) {
+  .room-card {
+    flex-basis: calc(100% - 20px);
+    /* 1 thẻ trên mỗi hàng */
+  }
+}
+
+#room-filter {
+  margin: 20px 0;
+
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.date-search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.date-search-container label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.date-search-container input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#search-button {
+  padding: 10px 20px;
+  background-color: #ff5a5f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#search-button:hover {
+  background-color: #ff7b7f;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+  /* Căn chỉnh các phần tử sang bên phải */
+  align-items: center;
+  margin-bottom: 10px;
+  /* Khoảng cách dưới cùng */
+}
+
+.filter-container label {
+  margin-right: 10px;
+  /* Khoảng cách giữa label và select */
+}
+
+/* Thay đổi màu sắc của liên kết được chọn trong thanh điều hướng */
+.DoiMauNaVar {
+  background-color: #e1acac;
+}
+
+.DoiMauNav {
+  background-color: #e0b5b5;
+}
+
+.DoiMauTextNav {
+  color: #f18f8f !important;
+}
+
+#news-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.news-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.news-item:hover {
+  transform: scale(1.05);
+}
+
+.news-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-item h3 {
+  padding: 15px;
+  font-size: 1.25rem;
+}
+
+.news-item p {
+  padding: 0 15px 15px;
+  font-size: 0.9rem;
+}
+
+.btnAvtLogin {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Ẩn phần tử chứa "Logout" ban đầu */
+.logout-text {
+  display: none;
+  position: absolute;
+  top: 100%;
+  /* Xuất hiện dưới nút */
+  left: 0;
+  background-color: #f8f9fa;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Hiển thị "Logout" khi hover */
+.btnAvtLogin:hover .logout-text {
+  display: block;
+}
+
+/* Một số style cho nút */
+.btnAvtLogin a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+.infor-form {
+  max-width: 600px;
+  margin-top: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.DMK-form {
+  max-width: 600px;
+  margin-top: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+.video-fixed {
+  position: fixed;
+  /* Giữ video ở vị trí cố định */
+  bottom: 10px;
+  /* Khoảng cách từ dưới lên */
+  left: 10px;
+  /* Khoảng cách từ bên trái sang */
+  z-index: 1000;
+  /* Đảm bảo video hiển thị trên các thành phần khác */
+}
+
+.video-fixed iframe {
+  width: 300px;
+  /* Kích thước video */
+  height: 170px;
+  /* Tương ứng với tỷ lệ 16:9 */
+  border: none;
+  /* Xóa viền */
+}
+
+.promotion {
+  position: fixed;
+  /* Giữ thông tin khuyến mãi ở vị trí cố định */
+  top: 200px;
+  /* Khoảng cách từ trên xuống */
+  left: 10px;
+  /* Khoảng cách từ bên trái sang */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Nền trắng với độ trong suốt */
+  border-radius: 10px;
+  /* Bo góc cho khung */
+  padding: 10px;
+  /* Khoảng cách bên trong */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Đổ bóng cho khung */
+  /* z-index: 1000; Đảm bảo nó hiển thị trên các phần khác */
+}
+
+.promotion h3 {
+  margin-bottom: 10px;
+  /* Khoảng cách dưới tiêu đề */
+}
+
+.wrapper {
+  display: inline-flex;
+  list-style: none;
+  height: 120px;
+  width: 100%;
+  padding-top: 40px;
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+}
+
+.wrapper .icon {
+  position: relative;
+  background: #fff;
+  border-radius: 50%;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #fff;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #fff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #1877f2;
+  color: #fff;
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
+  background: #1da1f2;
+  color: #fff;
+}
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before {
+  background: #e4405f;
+  color: #fff;
+}
+
+
+.contact-header h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact-header p {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.icon:hover .tooltip {
+  opacity: 1;
+  bottom: 80px;
+}

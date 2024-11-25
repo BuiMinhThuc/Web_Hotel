@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Tài Khoản - Hotels</title>
+    <link rel="stylesheet" href="/FE/Member/CSS/style.css">
+    <link rel="icon" href="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png" type="image/png">
+    <style>
+        body {
+            background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1730953894/h4_szpops.webp');
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .register-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header .logo {
+            width: 100px;
+            height: auto;
+        }
+        .header h2 {
+            margin: 10px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+        button:hover:enabled {
+            background-color: #0056b3;
+        }
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+            position: relative;
+        }
+        #actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #actions a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        #actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="header">
+            <img src="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png" alt="Logo" class="logo">
+            <h2>Đăng Ký Tài Khoản</h2>
+        </div>
+        <!-- Form đăng ký tài khoản -->
+        <form id="register-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="username">Tên Đăng Nhập:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật Khẩu:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="fullname">Họ và Tên:</label>
+                <input type="text" id="fullname" name="fullname">
+            </div>
+            <div class="form-group">
+                <label for="numberPhone">Số Điện Thoại:</label>
+                <input type="tel" id="numberPhone" name="numberPhone">
+            </div>
+            <div class="form-group">
+                <label for="urlAvt">Ảnh Đại Diện:</label>
+                <input type="file" id="urlAvatar" name="urlAvt" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="address">Địa Chỉ:</label>
+                <input type="text" id="address" name="address">
+            </div>
+            <button type="button" id="register-button" onclick="registerUser()" disabled>Đăng Ký</button>
+            <div class="error">
+                <div id="message"></div>
+            </div>
+        </form>
+        
+        <div id="actions">
+            <a href="/FE/Authen/Login.html" id="back-to-login">Quay lại trang đăng nhập</a>
+        </div>
+    </div>
+
+    <script>
+        const registerButton = document.getElementById('register-button');
+        const inputs = document.querySelectorAll('#register-form input[required]');
+
+        inputs.forEach(input => {
+            input.addEventListener('input', checkFormValidity);
+        });
+
+        function checkFormValidity() {
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === '') {
+                    allFilled = false;
+                }
+            });
+            registerButton.disabled = !allFilled;
+        }
+
+        async function registerUser() {
+            const formData = new FormData(document.getElementById('register-form'));
+            const message = document.getElementById('message');
+
+            message.innerText = ''; // Xóa thông báo cũ
+
+            try {
+                const response = await fetch('https://localhost:7286/Register', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.text();
+                if (data == 'Đăng ký tài khoản thành công !') {
+                    alert('Đăng ký tài khoản thành công, chuyển đến trang đăng nhập !');
+                    window.location.href = '/FE/Authen/Login.html'; // Chuyển hướng tới trang đăng nhập
+                } else {
+                    message.innerText = data;
+                }
+            } catch (error) {
+                message.innerText = 'Có lỗi xảy ra, vui lòng thử lại sau.';
+            }
+        }
+    </script>
+</body>
+</html>

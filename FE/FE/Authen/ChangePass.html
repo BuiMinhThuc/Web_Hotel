@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lại Mật Khẩu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png" type="image/png">
+    <style>
+        /* Thêm một số CSS để cải thiện hiển thị loading */
+        #loading {
+            display: none;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+        body {
+          background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1730953894/h4_szpops.webp');
+      font-family: Arial, sans-serif;
+   
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #eye i {
+      padding-right: 0;
+      cursor: pointer;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      /* Đặt nền trắng với độ mờ để nhìn rõ chữ */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 40px;
+      /* Điều chỉnh kích thước logo tùy ý */
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    #actions a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    #actions a:hover {
+      text-decoration: underline;
+    }
+
+    #error-message {
+      color: red;
+      margin-top: 15px;
+    }
+
+    .error {
+      color: #4CAF50;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    #loading::before {
+      content: '';
+      border: 5px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 5px solid #4CAF50;
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      animation: spin 2s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <img src="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png" alt="Logo" class="logo">
+            <h2>Đặt Lại Mật Khẩu</h2>
+        </div>
+        <!-- Form nhập mã OTP và mật khẩu mới -->
+        <form id="otp-form">
+            <div class="form-group">
+                <label for="otp">Nhập mã OTP:</label>
+                <input type="text" id="otp" name="otp" required>
+            </div>
+            <div class="form-group">
+                <label for="new-password">Mật khẩu mới:</label>
+                <input type="password" id="new-password" name="new-password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Xác nhận mật khẩu:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="button" onclick="changePassword()">Đổi mật khẩu</button>
+            <div id="otp-message" class="error"></div>
+        </form>
+        
+        <div id="loading">Đang xử lý, vui lòng chờ...</div> <!-- Hiệu ứng loading -->
+        
+        <div id="actions">
+            <a href="/FE/Authen/Login.html" id="back-to-login">Quay lại trang đăng nhập</a>
+            
+        </div>
+    </div>
+
+    <script>
+        async function changePassword() {
+            const otp = document.getElementById('otp').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const otpMessage = document.getElementById('otp-message');
+            const loading = document.getElementById('loading');
+
+            // Hiển thị hiệu ứng loading
+            loading.style.display = 'block';
+            otpMessage.innerText = '';  // Xóa thông báo cũ
+
+
+            try {
+                const response = await fetch('https://localhost:7286/Change_Pass', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ OTP: otp, PassWordNew: newPassword,PassWordComfirm:confirmPassword })
+                });
+
+                const data = await response.text();  // Lấy dữ liệu trả về dưới dạng chuỗi
+
+                if (data == 'Đổi Password thành công !') {
+                    alert('Đổi mật khẩu thành công. Chuyển về trang đăng nhập.');
+                    window.location.href = '/FE/Authen/Login.html';
+                } else {
+                  otpMessage.style.color = "#FF0000"; // Mã màu đỏ
+
+                    otpMessage.innerText = data; // Hiển thị lỗi từ API
+                }
+            } catch (error) {
+                otpMessage.innerText = 'Có lỗi xảy ra, vui lòng thử lại sau.';
+            } finally {
+                // Ẩn hiệu ứng loading sau khi hoàn tất
+                loading.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

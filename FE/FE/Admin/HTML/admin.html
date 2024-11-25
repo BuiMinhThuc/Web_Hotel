@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-FLORENTINO</title>
+    <link rel="icon" href="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png">
+    <link rel="stylesheet" href="/FE/Admin/CSS/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/FE/Member/CSS/style.css">
+    <link rel="stylesheet" href="/FE/Admin/CSS/AdminRoom.css">
+    <link rel="stylesheet" href="/FE/Admin/CSS/AdminPrint.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script defer src="/FE/Admin/JS/AdminBooking.js"></script>
+    <!-- <script defer src="/FE/Admin/JS/ModalQLDP.js"></script> -->
+    <script defer src="/FE/Admin/JS/AdminReport.js"></script>
+    <script defer src="/FE/Admin/JS/main.js"></script>
+    <script defer src="/FE/Admin/JS/AdminBillService.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .dashboard-container {
+            padding: 20px;
+        }
+
+        .dashboard-cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            width: 30%;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card h2 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .chart-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button2>
+                    <a href="#" class="btn2"><span class="spn2" id="btnLogin" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasDarkNavbar">HELLO !</span></a>
+                </button2>
+            </div>
+
+            <ul>
+                <li class="tab-button active" data-tab="booking"><i class="fas fa-bed"></i> Quản lý đặt phòng</li>
+                <li class="tab-button" data-tab="bill"><i class="fas fa-file-invoice"></i> Quản lý hóa đơn</li>
+                <li class="tab-button" data-tab="services"><i class="fas fa-concierge-bell"></i> Quản lý dịch vụ</li>
+                <li class="tab-button" data-tab="room"><i class="fas fa-door-closed"></i> Quản lý phòng</li>
+                <li class="tab-button" data-tab="customer"><i class="fas fa-user"></i> Quản lý khách hàng</li>
+                <li class="tab-button" data-tab="staff"><i class="fas fa-users"></i> Quản lý nhân viên</li>
+                <li class="tab-button" data-tab="accounts"><i class="fas fa-user-cog"></i> Quản lý tài khoản</li>
+                <li class="tab-button" data-tab="news"><i class="fas fa-newspaper"></i> Quản lý tin tức</li>
+                <li class="tab-button" data-tab="promotion"><i class="fas fa-tags"></i> Quản lý khuyến mãi</li>
+                <li class="tab-button" data-tab="reports"><i class="fas fa-chart-line"></i> Thống kê báo cáo</li>
+            </ul>
+
+        </aside>
+
+
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="Hello">Xin chào !</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+                    id="Closebtn"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link tab-button active" href="#" aria-current="page"  data-tab="infor-user"
+                            id="if1">Thông tin
+                            tài khoản</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tab-button active" href="#" aria-current="page"  data-tab="ResetPassword"
+                            id="if12">Đổi mật khẩu</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/FE/Authen/Login.html">Đăng xuất </a>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            function getUserNameFromToken111() {
+                const token = localStorage.getItem('token');
+
+                try {
+                    // Token consists of 3 parts separated by dots: Header.Payload.Signature
+                    const payloadBase64 = token.split('.')[1]; // Get the Payload part (second part)
+                    const decodedData = atob(payloadBase64); // Decode Base64
+
+                    // Decode as UTF-8 to handle special characters
+                    const payload = JSON.parse(new TextDecoder('utf-8').decode(new Uint8Array([...decodedData].map(char => char.charCodeAt(0)))));
+                    return payload.FullName; // Return the "FullName" field
+                } catch (error) {
+                    console.error('Error decoding token:', error);
+                    return null;
+                }
+            }
+
+            const hello = document.getElementById('Hello')
+            if (localStorage.getItem('token')) {
+                hello.textContent = `Xin chào ${getUserNameFromToken111()} !`;
+            } else {
+                hello.textContent = "Xin chào quý khách !"
+            }
+        </script>
+
+
+
+        <div id="infor-user" class="tab">
+            <div class="main-content">
+                <h2>Chỉnh sửa thông tin cá nhân</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="FullName1" class="form-label">Họ và tên</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Full-Name2" placeholder="Nhập họ và tên">
+                            <button class="btn btn-danger btn-sm " id="update-FullName" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="NumberPhone2" class="form-label">Số điện thoại</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-control" id="NumberPhone2" placeholder="Nhập số điện thoại">
+                            <button class="btn btn-danger btn-sm" id="update-NumberPhone" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="Card2" class="form-label">Số căn cước công dân</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-control" id="Card2" placeholder="Nhập số căn cước công dân">
+                            <button class="btn btn-danger btn-sm" id="update-Card2" type="button">Sửa</button>
+                        </div>
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="Email2" class="form-label">Email</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="Email2" placeholder="Nhập email" required>
+                            <button class="btn btn-danger btn-sm" id="update-Email" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address2" class="form-label">Địa chỉ</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Address2" placeholder="Nhập địa chỉ">
+                            <button class="btn btn-danger btn-sm" id="update-Address" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="UrlAvatar2">Ảnh Đại Diện:</label>
+                        <div class="input-group">
+                            <input type="file" id="UrlAvatar2" name="urlAvatar" accept="image/*"
+                                onchange="previewImage();">
+                            <button class="btn btn-danger btn-sm" id="update-urlAvt" type="button">Sửa</button>
+                        </div>
+                        <img id="imgAvtt" src="#" alt="Ảnh đại diện"
+                            style="display: none; max-width: 50px; max-height: 50px;">
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            getUserNameFromToken2(); // Gọi hàm này khi trang được tải để kiểm tra có token và hiển thị ảnh
+                        });
+
+                        function previewImage() {
+                            var file = document.querySelector('input[type=file]').files[0];
+                            var reader = new FileReader();
+
+                            reader.onloadend = function () {
+                                var img = document.getElementById('imgAvtt');
+                                img.src = reader.result;
+                                img.style.display = 'block';
+                            }
+
+                            if (file) {
+                                reader.readAsDataURL(file);
+                            } else {
+                                getUserNameFromToken2(); // Gọi hàm này nếu không có file được chọn
+                            }
+                        }
+
+                        function getUserNameFromToken2() {
+                            const token = localStorage.getItem('token');
+                            if (!token) {
+                                document.getElementById("imgAvtt").style.display = "none";
+                                return "Đăng nhập";
+                            }
+
+                            try {
+                                const payloadBase64 = token.split('.')[1];
+                                const payload = JSON.parse(atob(payloadBase64));
+                                fetchImageUrl2(payload.Id);
+                                return payload.Username;
+                            } catch (error) {
+                                console.error('Lỗi khi giải mã token:', error);
+                                return null;
+                            }
+                        }
+
+                        async function fetchImageUrl2(Id) {
+                            try {
+                                let response = await fetch(`https://localhost:7286/GetUrlAvt${Id}`);
+                                let imageUrl = await response.text();
+                                document.getElementById("imgAvtt").src = imageUrl;
+                                document.getElementById("imgAvtt").style.display = "block";
+                            } catch (error) {
+                                console.error('There was a problem with the fetch operation:', error);
+                            }
+                        }
+                    </script>
+
+
+
+                    <div class="mb-3">
+                        <label for="Gender" class="form-label">Giới tính</label>
+                        <div class="input-group">
+                            <select id="Gender">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                            <button class="btn btn-danger btn-sm" id="update-Gender" type="button">Sửa</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="BtnupdateinforUserbyCustomer">Cập nhật thông
+                        tin</button>
+                </form>
+
+            </div>
+        </div>
+
+        <!-- Resetpass -->
+        <div id="ResetPassword" class="tab ">
+            <div class="main-content">
+                <h2>Đổi mật khẩu</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="PassOld" class="form-label">Mật khẩu cũ</label>
+
+                        <input type="text" class="form-control" id="PassOld" placeholder="Nhập mật khẩu cũ">
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="PassNew" class="form-label">Mật khẩu mới</label>
+
+                        <input type="text" class="form-control" id="PassNew" placeholder="Nhập mật khẩu mới">
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="PassNewOk" class="form-label">Nhập lại mật khẩu mới</label>
+
+                        <input type="text" class="form-control" id="PassNewOk" placeholder="Nhập lại mật khẩu mới">
+
+
+                    </div>
+                    <button class="btn btn-primary" id="BtnUpdateResetPass">Ok</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.getElementById("BtnUpdateResetPass").addEventListener("click", function (event) {
+                event.preventDefault();  // Ngừng hành động mặc định của nút submit
+    
+                function getUserIdFromToken11() {
+                    const token = localStorage.getItem('token');
+                    try {
+                        // Token gồm 3 phần ngăn cách bởi dấu chấm: Header.Payload.Signature
+                        const payloadBase64 = token.split('.')[1]; // Lấy phần Payload (phần thứ 2)
+                        const payload = JSON.parse(atob(payloadBase64)); // Giải mã Base64 và parse thành JSON
+                        return payload.Id; // Trả về trường "Username"
+                    } catch (error) {
+                        console.error('Lỗi khi giải mã token:', error);
+                        return null;
+                    }
+                }
+    
+    
+                // Lấy giá trị từ các trường nhập liệu
+                const passOld = document.getElementById("PassOld").value;
+                const passNew = document.getElementById("PassNew").value;
+                const passConfirm = document.getElementById("PassNewOk").value;
+    
+                // Kiểm tra nếu mật khẩu cũ và mật khẩu mới nhập đúng
+                if (passOld === "" || passNew === "" || passConfirm === "") {
+                    alert("Vui lòng điền đầy đủ thông tin.");
+                    return;
+                }
+    
+                if (passNew !== passConfirm) {
+                    alert("Mật khẩu mới và xác nhận mật khẩu mới không khớp.");
+                    return;
+                }
+    
+                // Tạo đối tượng dữ liệu cần gửi đi
+                const data = {
+                    userId: getUserIdFromToken11(),
+                    passOld: passOld,
+                    passNew: passNew,
+                    passComfirm: passConfirm
+                };
+    
+                // Gọi API để đổi mật khẩu
+                fetch("https://localhost:7286/ChangePassByUser", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.status == 200) {
+                            alert(result.message);
+                        } else {
+                            alert(result.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Lỗi:", error);
+                        alert("Lỗi kết nối. Vui lòng thử lại sau.");
+                    });
+            });
+    
+        </script>
+
+
+
+        <!-- Main Content -->
+
+        <div id="booking" class="tab active">
+            <div class="main-content">
+                <h2 id="section-title">Quản lý đặt phòng</h2>
+                <div class="select-button">
+                    <!-- Button to Open Modal -->
+                    <button type="button" class="select-button-child " data-bs-toggle="modal"
+                        data-bs-target="#bookingModal">
+                        Thêm đặt phòng
+                    </button>
+                </div>
+                <h3>Danh sách đặt phòng </h3>
+                <div class="search-bar mb-3">
+                    <input type="text" id="searchInputBooking" class="form-control" placeholder="Tìm kiếm theo ID">
+                </div>
+                <div id="tab-content">
+                    <table class="table table-striped table-bordered table-rounded" style=" font-size: 12px"
+                        id="bookingTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Hóa đơn ID</th>
+                                <th>Tên khách hàng</th>
+                                <th>Các loại phòng</th>
+                                <th>Các phòng</th>
+                                <th>Ngày nhận phòng</th>
+                                <th>Ngày trả phòng</th>
+                                <th>Số trẻ em</th>
+                                <th>Số điện thoại</th>
+                                <th>Số căn cước</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dữ liệu sẽ được thêm vào đây -->
+                        </tbody>
+                    </table>
+
+                    <!-- Phân trang đơn giản -->
+                    <div class="pagination-controls d-flex align-items-center container-btn">
+                        <button class="btn btn-primary btN-pre" id="nextBtn" onclick="nextPage()">Trang sau</button>
+
+                        <span id="pageNum" class="pageCSS">1</span>
+                        <button class="btn btn-primary btN-pre" id="prevBtn" onclick="prevPage()">Trang trước</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Modal Đặt Phòng -->
+        <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="bookingModalLabel">Đặt Phòng Khách Sạn</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="bookingForm">
+                            <!-- Họ và Tên -->
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Họ và tên *</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Họ và tên" required>
+                            </div>
+
+                            <!-- Số điện thoại -->
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Số điện thoại *</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Số điện thoại" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cardNumber2" class="form-label">Số căn cước *</label>
+                                <input type="tel" class="form-control" id="cardNumber2" placeholder="Số căn cước"
+                                    required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="email" placeholder="ex: myname@gmail.com"
+                                    required>
+                            </div>
+
+                            <!-- Chọn Loại Phòng -->
+                            <div class="mb-3">
+                                <label class="form-label">Chọn loại phòng *</label>
+                                <div id="roomListContainer" class="dropdown-section">
+                                    <!-- Room types will be populated by JavaScript -->
+                                </div>
+                            </div>
+
+                            <!-- Người lớn và Trẻ em -->
+                            <div class="mb-3" style="display: none;">
+                                <label class="form-label">Người lớn</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-outline-secondary" id="adultMinus">-</button>
+                                    <input type="number" class="form-control text-center" id="adultCount" value="0"
+                                        min="0" readonly>
+                                    <button type="button" class="btn btn-outline-secondary" id="adultPlus">+</button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Trẻ em</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-outline-secondary" id="childMinus">-</button>
+                                    <input type="number" class="form-control text-center" id="childCount" value="0"
+                                        min="0" readonly>
+                                    <button type="button" class="btn btn-outline-secondary" id="childPlus">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Ngày nhận và Ngày trả -->
+                            <div class="mb-3">
+                                <label for="checkInDate" class="form-label">Ngày nhận phòng *</label>
+                                <input type="date" class="form-control" id="checkInDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="checkOutDate" class="form-label">Ngày trả phòng *</label>
+                                <input type="date" class="form-control" id="checkOutDate" required>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                <button type="submit" class="btn btn-primary">Đặt phòng</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="bill" class="tab">
+            <div class="main-content">
+                <h2 id="section-title">Quản lý hóa đơn</h2>
+                <h3>Danh sách hóa đơn</h3>
+                <div class="search-bar mb-3">
+                    <input type="text" id="searchInputBill" class="form-control" placeholder="Tìm kiếm theo ID">
+                </div>
+                <div id="tab-content">
+                    <table class="table table-striped table-bordered table-rounded" id="billTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Đặt phòng ID</th>
+                                <th>Tổng tiền</th>
+                                <th>Ngày lập hóa đơn</th>
+                                <th>Đã thanh toán</th>
+                                <th>Nội dung đã thanh toán</th>
+                                <th>Tổng Nội dung thanh toán</th>
+                                <th>Trạng thái</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                        </tbody>
+                    </table>
+                    <!-- đâ -->
+                    <div class="pagination-controls d-flex align-items-center container-btn">
+                        <button class="btn btn-primary btN-pre" id="nextBtnBill" onclick="nextInvoicePage()">Trang
+                            sau</button>
+                        <span id="pageNumBill" class="pageCSS">1</span>
+                        <button class="btn btn-primary btN-pre" id="prevBtnBill" onclick="prevInvoicePage()">Trang
+                            trước</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="services" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý Dịch vụ</h2>
+            <div class="select-button">
+                <button class="select-button tab-button" data-tab="billService">Dịch vụ khách đặt</button>
+                <div class="select-button-child" style="display: block;">
+                    <button class="select-button tab-button" data-tab="TypeService">Quản lý loại dịch vụ</button>
+                    <!-- Button to trigger the modal -->
+                    <button type="button" id="addServiceButton" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalCreateService">
+                        Thêm dịch vụ
+                    </button>
+                </div>
+            </div>
+            <h3>Danh sách dịch vụ</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="serviceTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Loại dịch vụ</th>
+                            <th>Giá tiền</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu dịch vụ sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnService" onclick="nextServicePage()">Trang
+                        sau</button>
+                    <span id="pageNumService" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnService" onclick="prevServicePage()">Trang
+                        trước</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCreateService" tabindex="-1" aria-labelledby="modalCreateServiceLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCreateServiceLabel">Thêm Dịch Vụ Mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addServiceForm">
+                        <div class="mb-3">
+                            <label for="serviceName" class="form-label">Tên Dịch Vụ</label>
+                            <input type="text" class="form-control" id="serviceName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="serviceType" class="form-label">Loại Dịch Vụ</label>
+                            <select class="form-select" id="serviceType" required>
+                                <!-- Options will be dynamically loaded -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="servicePrice" class="form-label">Giá Tiền (VND)</label>
+                            <input type="number" class="form-control" id="servicePrice" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="addService()">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Service Modal -->
+    <div class="modal fade" id="modalUpdateService" tabindex="-1" aria-labelledby="modalUpdateServiceLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUpdateServiceLabel">Cập Nhật Dịch Vụ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateServiceForm">
+                        <input type="hidden" id="updateServiceId">
+                        <div class="mb-3">
+                            <label for="updateServiceName" class="form-label">Tên Dịch Vụ</label>
+                            <input type="text" class="form-control" id="updateServiceName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateServiceType" class="form-label">Loại Dịch Vụ</label>
+                            <select class="form-select" id="updateServiceType" required>
+                                <!-- Options will be dynamically loaded -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="updateServicePrice" class="form-label">Giá Tiền (VND)</label>
+                            <input type="number" class="form-control" id="updateServicePrice" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="updateService()">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="TypeService" class="tab ">
+        <div class="main-content">
+            <h2 id="section-title">Quản lý loại dịch vụ</h2>
+            <div class="select-button">
+                <!-- Button to Open Modal -->
+                <button type="button" class="select-button-child " data-bs-toggle="modal"
+                    data-bs-target="#createTypeServiceModal">
+                    Thêm loại dịch vụ
+                </button>
+            </div>
+            <h3>Danh sách loại dịch vụ </h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputBooking" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" style=" font-size: 16px"
+                    id="TypeServiceTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên loại</th>
+
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <!-- Phân trang đơn giản -->
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtn" onclick="nextPage()">Trang sau</button>
+
+                    <span id="pageNum" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtn" onclick="prevPage()">Trang trước</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="billService" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý đặt dịch vụ</h2>
+            <div class="select-button">
+
+                <select id="billserviceChoose" onchange="getListBillService()">
+                    <option value="All">Tất cả các đơn</option>
+                    <option value="NotOk">Đơn chưa hoàn thành</option>
+                    <option value="Ok">Đơn đã hoàn thành</option>
+                </select>
+            </div>
+
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputBookingService" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <h3>Danh sách dịch vụ đặt</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="billServiceTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Hóa đơn Id</th>
+                            <th>Phòng đặt</th>
+                            <th>Tên dịch vụ</th>
+                            <th>Số lượng</th>
+                            <th>Thời gian đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnBillService"
+                        onclick="nextBillServicePage()">Trang
+                        sau</button>
+                    <span id="pageNumBillService" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnBillService"
+                        onclick="prevBillServicePage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="room" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý phòng</h2>
+            <div class="select-button">
+                <div style="display: block;">
+                    <select id="room-filter" onchange="getRoomTypes()">
+                        <option value="all">Tất cả các phòng</option>
+                        <option value="active">Phòng đang sử dụng</option>
+                    </select>
+                    <button id="search" class="select-button" onclick="SearchRoomNull()">Tìm kiếm phòng trống </button>
+
+                    <div id="TabSearch" style="display: none;">
+                        <label for="checkin-date" style="margin-left: 10px;">Ngày đến:</label>
+                        <input type="date" id="checkin-date" name="checkin-date">
+
+                        <label for="checkout-date" style="margin-left: 20px;">Ngày đi:</label>
+                        <input type="date" id="checkout-date" name="checkout-date">
+                        <div style="display: block;">
+                            <button id="SearchReal" class="select-button" onclick="Search()">Tìm </button>
+                            <button id="Detroy" class="select-button" onclick="DetroySearchRoomNull()">Hủy </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="select-button-child">
+                    <!-- Updated button for adding a room -->
+                    <button type="button" onclick="openAddRoomModal()">Thêm Phòng</button>
+                    <button class="select-button tab-button" data-tab="RoomType">Quản lý loại phòng</button>
+
+
+                </div>
+            </div>
+            <h3>Danh sách phòng</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="roomTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên phòng</th>
+                            <th>Loại phòng</th>
+                            <th>Giá ngày</th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnRoom" onclick="nextRoomPage()">Trang
+                        sau</button>
+                    <span id="pageNumRoom" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnRoom" onclick="prevRoomPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="manageRoomImagesModal" class="modal-imgRoom">
+        <div class="modal-content-imgroom">
+            <span class="close" onclick="closeManageRoomImagesModal()">&times;</span>
+            <h2>Quản lý ảnh cho phòng</h2>
+            <div class="image-gallery" id="imageGallery">
+                Images will be dynamically added here
+                <div class="image-item" id="add-new-image">
+                    <input type="file" id="newAddImageInput" class="newImageInput" accept="image/*"
+                        style="display: none;">
+                    <button id="addNewImageButton">Thêm ảnh mới</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loadingOverlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <style>
+        .modal-imgRoom {
+            display: none;
+            /* Hiển thị modal dưới dạng flex để căn giữa */
+            z-index: 1;
+            position: fixed;
+            /* Giữ modal ở giữa trình duyệt */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content-imgroom {
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            max-width: 600px;
+            /* Giới hạn chiều rộng tối đa */
+            border-radius: 8px;
+            /* Tùy chọn bo tròn góc */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            /* Đổ bóng cho modal */
+        }
+
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .image-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .room-image {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .image-controls {
+            margin-top: 10px;
+        }
+
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+
+    <script>
+        let currentRoomId;
+        function showLoading() {
+            document.getElementById("loadingOverlay").style.display = "flex";
+        }
+
+        function hideLoading() {
+            document.getElementById("loadingOverlay").style.display = "none";
+        }
+
+
+
+        function openManageRoomImagesModal(roomId) {
+            currentRoomId = roomId;
+            document.getElementById("manageRoomImagesModal").style.display = "flex";
+            fetchRoomImages(roomId);
+        }
+
+        function closeManageRoomImagesModal() {
+            document.getElementById("manageRoomImagesModal").style.display = "none";
+        }
+
+        function deleteImage(imageId, roomId) {
+
+            fetch(`https://localhost:7286/api/Controller_Admin/DeleteImgRoom?service=${imageId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById(`image${imageId}`).remove();
+                    } else {
+                        console.error('Error deleting image');
+                    }
+                })
+                .catch(error => console.error('Error deleting image:', error));
+        }
+
+        function replaceImage(imageId, roomId) {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+
+            fileInput.onchange = () => {
+                const file = fileInput.files[0];
+                if (file) {
+                    showLoading();
+                    const formData = new FormData();
+                    formData.append("UrlImg", file); // Đảm bảo tên trường khớp với yêu cầu API
+                    formData.append("RoomId", roomId);
+
+                    fetch(`https://localhost:7286/api/Controller_Admin/UpdateImgRoom?Id=${imageId}&RoomId=${roomId}`, {
+                        method: 'PUT',
+                        body: formData
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                const imgElement = document.querySelector(`#image${imageId} img`);
+                                const newObjectURL = URL.createObjectURL(file);
+                                imgElement.src = newObjectURL; // Cập nhật hình ảnh trên giao diện
+                                URL.revokeObjectURL(imgElement.dataset.oldUrl); // Giải phóng URL cũ
+                                imgElement.dataset.oldUrl = newObjectURL;
+                                hideLoading();
+                            } else {
+                                console.error('Error updating image');
+                            }
+                        })
+                        .catch(error => {
+                            hideLoading()
+                            console.error('Error updating image:', error)
+                        });
+                }
+            };
+
+            fileInput.click();
+        }
+
+
+
+
+        function deleteImage(imageId, roomId) {
+            fetch(`https://localhost:7286/api/Controller_Admin/DeleteImgRoom?service=${imageId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById(`image${imageId}`).remove();
+                    } else {
+                        console.error('Error deleting image');
+                    }
+                })
+                .catch(error => console.error('Error deleting image:', error));
+        }
+
+        function fetchRoomImages(roomId) {
+            fetch(`https://localhost:7286/api/Controller_Admin/GetListImgRoom?Id=${roomId}`)
+                .then(response => response.json())
+                .then(images => {
+                    const imageGallery = document.getElementById("imageGallery");
+                    imageGallery.innerHTML = ''; // Xóa ảnh hiện có trước khi thêm mới
+
+                    images.forEach((image, index) => {
+                        const imageItem = document.createElement("div");
+                        imageItem.className = "image-item";
+                        imageItem.id = `image${image.id}`;
+
+                        const imgElement = document.createElement("img");
+                        imgElement.src = image.urlImage;
+                        imgElement.alt = `Room Image ${index + 1}`;
+                        imgElement.className = "room-image";
+                        imgElement.dataset.oldUrl = image.urlImage;
+
+                        const controls = document.createElement("div");
+                        controls.className = "image-controls";
+
+                        const deleteButton = document.createElement("button");
+                        deleteButton.innerText = "Xóa";
+                        deleteButton.onclick = () => deleteImage(image.id, roomId);
+
+                        const replaceButton = document.createElement("button");
+                        replaceButton.innerText = "Thay Ảnh";
+
+                        replaceButton.onclick = () => replaceImage(image.id, roomId);
+
+                        controls.appendChild(deleteButton);
+                        controls.appendChild(replaceButton);
+
+                        imageItem.appendChild(imgElement);
+                        imageItem.appendChild(controls);
+                        imageGallery.appendChild(imageItem);
+                    });
+
+                    // Thêm nút "Thêm ảnh mới" vào cuối danh sách ảnh
+                    const addNewImageItem = document.createElement("div");
+                    addNewImageItem.className = "image-item";
+                    addNewImageItem.id = "add-new-image";
+
+                    const addNewImageButton = document.createElement("button");
+                    addNewImageButton.innerText = "Thêm ảnh mới";
+                    addNewImageButton.onclick = () => {
+                        const inputAddnewImageRoom = document.createElement('input');
+                        inputAddnewImageRoom.type = 'file';
+                        inputAddnewImageRoom.accept = 'image/*';
+                        inputAddnewImageRoom.style.display = 'none';
+
+                        // Xử lý khi file được chọn
+                        inputAddnewImageRoom.onchange = (event) => {
+                            const file = event.target.files[0];
+                            if (file) {
+                                showLoading(); // Hiển thị loading
+                                const formData = new FormData();
+                                formData.append('UrlImg', file); // Tên trường phải khớp với API
+                                formData.append('RoomId', roomId);
+
+                                fetch(`https://localhost:7286/api/Controller_Admin/CreateImgRoom?RoomId=${roomId}`, {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                    .then(response => {
+                                        if (!response.ok) throw new Error("Failed to upload image");
+                                        return response.json();
+                                    })
+                                    .then(() => {
+                                        hideLoading(); // Ẩn loading sau khi tải lên thành công
+                                        fetchRoomImages(roomId); // Cập nhật lại danh sách ảnh sau khi tải lên thành công
+                                    })
+                                    .catch(error => {
+                                        hideLoading(); // Ẩn loading sau khi tải lên thành công
+                                        console.error('Error adding new image:', error);
+                                    })
+                            }
+                        };
+
+                        // Kích hoạt cửa sổ chọn file
+                        document.body.appendChild(inputAddnewImageRoom);
+                        inputAddnewImageRoom.click();
+                        document.body.removeChild(inputAddnewImageRoom); // Xóa input sau khi hoàn thành
+                    };
+
+                    addNewImageItem.appendChild(addNewImageButton);
+                    imageGallery.appendChild(addNewImageItem); // Thêm nút "Thêm ảnh mới" vào cuối gallery
+                })
+                .catch(error => console.error('Error fetching room images:', error));
+        }
+
+
+    </script>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="equipmentModal" tabindex="-1" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="equipmentModalLabel">Danh sách thiết bị trong phòng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="display: none;"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Table for equipment list -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tên thiết bị</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody id="equipmentList">
+                            <!-- Equipment items will be injected here -->
+                        </tbody>
+                    </table>
+                    <!-- Add equipment input and button -->
+                    <input type="text" id="newEquipmentName" class="form-control" placeholder="Nhập tên thiết bị mới">
+                    <button type="button" class="btn btn-success mt-2" onclick="addEquipment()">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Thêm Phòng -->
+    <div class="modal fade" id="modalAddRoom" tabindex="-1" aria-labelledby="modalAddRoomLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAddRoomLabel">Thêm Phòng Mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="addRoomName" class="form-label">Tên phòng</label>
+                        <input type="text" class="form-control" id="addRoomName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addRoomType" class="form-label">Loại phòng</label>
+                        <select class="form-control" id="addRoomType">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="addRoom()">Thêm Phòng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Sửa Phòng -->
+    <div class="modal fade" id="modalEditRoom" tabindex="-1" aria-labelledby="modalEditRoomLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditRoomLabel">Sửa Thông Tin Phòng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editRoomId">
+                    <div class="mb-3">
+                        <label for="editRoomName" class="form-label">Tên phòng</label>
+                        <input type="text" class="form-control" id="editRoomName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editRoomType" class="form-label">Loại phòng</label>
+                        <select class="form-control" id="editRoomType">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="updateRoom()">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="RoomType" class="tab ">
+        <div class="main-content">
+            <h2 id="section-title">Quản lý loại phòng</h2>
+            <div class="select-button">
+                <!-- Button to Open Modal -->
+                <button type="button" class="select-button-child " data-bs-toggle="modal"
+                    data-bs-target="#createRoomTypeModal">
+                    Thêm loại phòng
+                </button>
+            </div>
+            <h3>Danh sách loại phòng </h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" style=" font-size: 16px"
+                    id="RoomTypeTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên loại phòng</th>
+                            <th>Giá ngày</th>
+                            <th>Số người lớn</th>
+
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <!-- Phân trang đơn giản -->
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtn" onclick="nextPage()">Trang sau</button>
+
+                    <span id="pageNum" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtn" onclick="prevPage()">Trang trước</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="customer" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý khách hàng</h2>
+            <div class="select-button">
+
+                <!-- <button class="select-button">Tất cả phòng </button> -->
+                <div class="select-button-child">
+
+                    <button class="tab-button" data-tab="customerHistory">Lịch sử đặt phòng</button>
+
+                </div>
+            </div>
+
+            <h3>Danh sách khách hàng</h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputCustomer" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="customerTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Số CCCD</th>
+                            <th>Quốc tịch</th>
+                            <th>Giới tính</th>
+                            <th>Ngày sinh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnCustomer" onclick="nextCustomerPage()">Trang
+                        sau</button>
+                    <span id="pageNumCustomer" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnCustomer" onclick="prevCustomerPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="customerHistory" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Lịch sử đặt phòng</h2>
+            <div class="select-button">
+
+            </div>
+
+            <h3>Danh sách lịch sử đặt của khách hàng</h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputCustomer" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="customerHistoryTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Số CCCD</th>
+                            <th>Nội dung thanh toán</th>
+                            <th>Ngày lập hóa đơn</th>
+                            <th>Giới tính</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnCustomerHistory"
+                        onclick="nextCustomerHistoryPage()">Trang
+                        sau</button>
+                    <span id="pageNumCustomer" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnCustomerHistory"
+                        onclick="prevCustomerHistoryPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="staff" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý nhân viên</h2>
+            <div class="select-button">
+                <div class="select-button-child">
+                    <button class="tab-button" data-tab="staffShift">Quản lý lịch làm việc</button>
+
+                </div>
+            </div>
+            <h3>Danh sách nhân viên</h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputStaff" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="staffTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Giới tính</th>
+                            <th>Chức năng</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnStaff" onclick="nextStaffPage()">Trang
+                        sau</button>
+                    <span id="pageNumStaff" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnStaff" onclick="prevStaffPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="staffShift" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý lịch làm việc</h2>
+            <div class="select-button">
+
+                <div class="select-button-child">
+                    <button type="button" class="select-button-child " data-bs-toggle="modal"
+                        data-bs-target="#createWorkShiftModal">Thêm lịch làm việc</button>
+
+                </div>
+            </div>
+            <h3>Danh sách lịch làm việc</h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputStaffShift" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="staffShiftTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày</th>
+                            <th>Giờ bắt đầu</th>
+                            <th>Giờ kết thúc</th>
+                            <th>Ca làm</th>
+                            <th>Chức năng</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnStaffShift" onclick="nextStaffShiftPage()">Trang
+                        sau</button>
+                    <span id="pageNumStaffShift" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnStaffShift" onclick="prevStaffShiftPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal Sửa Nhân Viên -->
+    <div class="modal fade" id="modalEditStaff" tabindex="-1" aria-labelledby="modalEditStaffLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditStaffLabel">Sửa Thông Tin Nhân Viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editStaffId">
+                    <div class="mb-3">
+                        <label for="editStaffName" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="editStaffName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editStaffEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="editStaffEmail">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editStaffPhone" class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" id="editStaffPhone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editStaffAddress" class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="editStaffAddress">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editStaffGender" class="form-label">Giới tính</label>
+                        <select class="form-control" id="editStaffGender">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="updateStaff()">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="accounts" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý tài khoản</h2>
+
+            <h3>Danh sách tài khoản</h3>
+            <div class="search-bar mb-3">
+                <input type="text" id="searchInputAccount" class="form-control" placeholder="Tìm kiếm theo ID">
+            </div>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="accountsTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên đăng nhập</th>
+
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Ảnh</th>
+                            <th>Địa chỉ</th>
+                            <th>Quyền</th>
+                            <th>Trạng thái</th>
+                            <th>Chức năng</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnAccount" onclick="nextAccountPage()">Trang
+                        sau</button>
+                    <span id="pageNumAccount" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnAccount" onclick="prevAccountPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal Sửa Tài Khoản -->
+    <div class="modal fade" id="editAccountModal" tabindex="-1" aria-labelledby="editAccountModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editAccountModalLabel">Sửa Thông Tin Tài Khoản</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="userId">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Tên đăng nhập</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="fullname" name="fullname">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email11" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="phone11" name="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="address" name="address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Quyền hạn</label>
+                            <select class="form-control" id="role" name="role">
+                                <option value="Quản lý">Quản lý</option>
+                                <option value="Nhân viên">Nhân viên</option>
+                                <option value="Người dùng">Người dùng</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Trạng thái</label>
+                            <select class="form-control" id="status" name="status">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="avatar" class="form-label">Ảnh đại diện</label>
+                            <input type="file" class="form-control" id="avatar11" name="avatar">
+                            <img id="avatarPreview" src="" alt="Ảnh đại diện hiện tại"
+                                style="width: 100px; height: 100px; margin-top: 10px; display: none;">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="updateUser">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="news" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý tin tức</h2>
+            <div class="select-button">
+
+                <!-- <button class="select-button">Tất cả phòng </button>
+                <button class="select-button">Đơn chưa hoàn thành </button>
+                <button class="select-button">Đơn đã hoàn thành </button>  -->
+                <div class="select-button-child">
+                    <button id="showAddNewsModal" onclick="showAddNewsModal()">Thêm tin tức</button>
+
+                </div>
+            </div>
+            <h3>Danh sách tin tức</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="newsTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Ảnh</th>
+                            <th>Chức năng</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnNews" onclick="nextNewsPage()">Trang
+                        sau</button>
+                    <span id="pageNumNews" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnNews" onclick="prevNewsPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal thêm Tin tức -->
+    <div class="modal fade" id="createNewsModal" tabindex="-1" aria-labelledby="createNewsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createNewsModalLabel">Thêm tin tức</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="userId">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" id="title" name="title">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Nội dung</label>
+                            <input type="text" class="form-control" id="content" name="content">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="imgNews" class="form-label">Ảnh đại diện</label>
+                            <input type="file" class="form-control" id="imgNews" name="imgNews">
+                            <img id="avatarNewsPreview" src="" alt="Ảnh hiện tại"
+                                style="width: 100px; height: 100px; margin-top: 10px; display: none;">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="addNews">Thêm tin tức</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal Sửa Tin tức -->
+    <div class="modal fade" id="editNewsModal" tabindex="-1" aria-labelledby="editNewsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editNewsModalLabel">Sửa tin tức</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="userId">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Tiêu đề</label>
+                            <input type="text" class="form-control" id="titleEdit" name="title">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Nội dung</label>
+                            <input type="text" class="form-control" id="contentEdit" name="content">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="imgNews" class="form-label">Ảnh đại diện</label>
+                            <input type="file" class="form-control" id="imgNewsEdit" name="imgNews">
+                            <img id="avatarNewsPreviewEdit" src="" alt="Ảnh hiện tại"
+                                style="width: 100px; height: 100px; margin-top: 10px; display: none;">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="updateNews">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="promotion" class="tab">
+        <div class="main-content">
+            <h2 id="section-title-Service">Quản lý khuyến mãi</h2>
+            <div class="select-button">
+
+                <!-- <button class="select-button">Tất cả phòng </button>
+                <button class="select-button">Đơn chưa hoàn thành </button>
+                <button class="select-button">Đơn đã hoàn thành </button>  -->
+                <div class="select-button-child">
+                    <button type="button" id="addPromotionButton" class="btn btn-primary"
+                        onclick="showAddPromotionModal()">Thêm khuyến mãi</button>
+
+                </div>
+            </div>
+            <h3>Danh sách khuyến mãi</h3>
+            <div id="tab-content">
+                <table class="table table-striped table-bordered table-rounded" id="promotionTable">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Thời gian bắt đầu</th>
+                            <th>Thời gian kết thúc</th>
+                            <th>% Giảm</th>
+                            <th>Chức năng</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu hóa đơn sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+
+                <div class="pagination-controls d-flex align-items-center container-btn">
+                    <button class="btn btn-primary btN-pre" id="nextBtnPromotion" onclick="nextPromotionPage()">Trang
+                        sau</button>
+                    <span id="pageNumPromotion" class="pageCSS">1</span>
+                    <button class="btn btn-primary btN-pre" id="prevBtnPromotion" onclick="prevPromotionPage()">Trang
+                        trước</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal Thêm Khuyến Mãi -->
+    <div class="modal fade" id="createPromotionModal" tabindex="-1" aria-labelledby="createPromotionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPromotionModalLabel">Thêm Khuyến Mãi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="startDate" class="form-label">Thời gian bắt đầu</label>
+                            <input type="datetime-local" class="form-control" id="startDate" name="startDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="endDate" class="form-label">Thời gian kết thúc</label>
+                            <input type="datetime-local" class="form-control" id="endDate" name="endDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="priceOff" class="form-label">% Giảm</label>
+                            <input type="number" class="form-control" id="priceOff" name="priceOff">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="addPromotion">Thêm Khuyến Mãi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sửa Khuyến Mãi -->
+    <div class="modal fade" id="editPromotionModal" tabindex="-1" aria-labelledby="editPromotionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPromotionModalLabel">Sửa Khuyến Mãi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="promotionId">
+                        <div class="mb-3">
+                            <label for="editStartDate" class="form-label">Thời gian bắt đầu</label>
+                            <input type="datetime-local" class="form-control" id="editStartDate" name="editStartDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEndDate" class="form-label">Thời gian kết thúc</label>
+                            <input type="datetime-local" class="form-control" id="editEndDate" name="editEndDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPriceOff" class="form-label">% Giảm</label>
+                            <input type="number" class="form-control" id="editPriceOff" name="editPriceOff">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="updatePromotion">Cập Nhật Khuyến Mãi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="reports" class="tab">
+        <div class="main-content">
+
+            <div class="dashboard-container">
+                <!-- Cards to Display Total Values -->
+                <div class="dashboard-cards">
+                    <div class="card total-sales">
+                        <h4>Tổng doanh thu</h4>
+                        <h2 id="totalSalesValue">0.00 VNĐ</h2>
+                    </div>
+                    <div class="card total-orders">
+                        <h4>Tổng đặt phòng</h4>
+                        <h2 id="totalOrdersValue">0</h2>
+                    </div>
+                    <div class="card daily-visitors">
+                        <h4>Loại Phòng Hot</h4>
+                        <h2 id="TypeRoomName">Không có dữ liệu</h2>
+                        <p id="TotalQuantity"></p>
+                    </div>
+                </div>
+
+                <!-- Chart Container for Total Sales -->
+                <div class="hhh1" style="display: flex;">
+                    <div class="chart-container">
+                        <h3>Biểu đồ doanh thu</h3>
+                        <canvas id="totalSalesChart"></canvas>
+                    </div>
+                    <div class="dashboard-cards" style="display: block;">
+
+                        <div class="card total-orders Sen" style="
+    left: 60px;
+    width: 330px;
+    top: 30px;
+">
+
+                            <h3>Lượng khách trong khách sạn</h4>
+                                <div style="display: flex;">
+                                    <div class="ttt1" style="margin-right: 20px;margin-left: 40px;">
+                                        <h5 style="width: 92px;;">Người lớn</h5>
+
+                                        <h6 id="totalAdult">0</h6>
+                                    </div>
+                                    <div class="ttt1" style="margin-right: 50px;margin-left: 20px;">
+                                        <h5 style="width: 92px;">Trẻ em</h5>
+                                        <h6 id="totalChild">0</h6>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="card  total-orders" style="margin-top: 50px;
+                        margin-left: 60px;
+                        width: 332px;">
+                            <h4>Đang sử dụng</h4>
+                            <div style="display: flex;">
+                                <h6 id="TypeRoomName">Phòng đơn: </h2>
+                                    <p id="TypeAlone" style="margin-left: 64px;">0</p>
+                            </div>
+                            <div style="display: flex;">
+                                <h6 id="TypeRoomName">Phòng đôi: </h2>
+                                    <p id="TypeDouble" style="margin-left: 70px;">0</p>
+                            </div>
+                            <div style="display: flex;">
+                                <h6 id="TypeRoomName">Phòng vip: </h2>
+                                    <p id="TypeVip" style="margin-left: 71px;">0</p>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="editModalBooking" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Chỉnh sửa thông tin đặt phòng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">Tên khách hàng</label>
+                            <input type="text" class="form-control" id="customerName" placeholder="Nhập tên khách hàng">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerNumberCard" class="form-label">Số căn cước</label>
+                            <input type="text" class="form-control" id="customerNumberCard"
+                                placeholder="Nhập số căn cước">
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label for="checkInDate" class="form-label">Ngày nhận phòng</label>
+                            <input type="date" class="form-control" id="checkInDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="checkOutDate" class="form-label">Ngày trả phòng</label>
+                            <input type="date" class="form-control" id="checkOutDate">
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="customerPhone" placeholder="Nhập số điện thoại">
+                        </div>
+                        <button id="updateBookingv1" class="btn btn-primary">Lưu thay đổi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+<script src="/FE/Admin/JS/AdminAccount.js"></script>
+<script src="/FE/Admin/JS/AdminPromotion.js"></script>
+<script src="/FE/Admin/JS/AdminStaffShift.js"></script>
+<script src="/FE/Admin/JS/AdminNews.js"></script>
+
+<script src="/FE/Admin/JS/AdminStaff.js"></script>
+<!-- <script src="/FE/Admin/JS/AdminBill.js"></script> -->
+<script src="/FE/Admin/JS/AdminBill.js"></script>
+<script src="/FE/Admin/JS/AdminTypeService.js"></script>
+<script src="/FE/Admin/JS/AdminRoomType.js"></script>
+<script src="/FE/Admin/JS/AdminService.js"></script>
+<script src="/FE/Admin/JS/AdminRoom.js"></script>
+<script src="/FE/Admin/JS/AdminCustomer.js"></script>
+<script src="/FE/Admin/JS/updateinforUserbyAdmin.js"></script>
+
+</html>

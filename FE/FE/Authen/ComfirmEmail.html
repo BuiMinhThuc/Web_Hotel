@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Mã Xác Nhận - Hotels</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png"
+        type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1730953894/h4_szpops.webp');
+            background-image: url('https://pistachiohotel.com/UploadFile/Gallery/Overview/a2.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .verification-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .header h2 {
+            margin: 10px 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+
+        .timer {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        #resend {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #resend.disabled {
+            color: #ccc;
+            pointer-events: none;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="verification-container">
+        <div class="header">
+            <img src="http://dongvanhotel.com.vn/wp-content/uploads/2017/10/DongVanHotel-small-logo.png" alt="Logo"
+                class="logo">
+            <h2>Nhập Mã Xác Nhận</h2>
+        </div>
+        <form id="verification-form">
+            <div class="form-group">
+                <label for="otp">Nhập mã xác nhận:</label>
+                <input type="text" id="otp" name="otp" required>
+            </div>
+            <button type="button" onclick="verifyCode()">Xác Nhận</button>
+            <div class="error" id="message"></div>
+            <div class="timer" id="timer">05:00</div>
+            <span id="resend" class="disabled" onclick="resendCode()">Gửi lại mã</span>
+        </form>
+    </div>
+
+    <script>
+        let countdown;
+        let timeLeft;
+
+        function startCountdown(minutesRemaining) {
+            const timerElement = document.getElementById('timer');
+            timeLeft = minutesRemaining * 60; // Convert minutes to seconds
+            countdown = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    document.getElementById('resend').classList.remove('disabled');
+                    timerElement.textContent = "00:00";
+                } else {
+                    timeLeft--;
+                    const minutes = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                    const seconds = (timeLeft % 60).toString().padStart(2, '0');
+                    timerElement.textContent = `${minutes}:${seconds}`;
+                }
+            }, 1000);
+        }
+
+        async function verifyCode() {
+    const otp = document.getElementById('otp').value;
+    const message = document.getElementById('message');
+
+    try {
+        // First fetch request for OTP verification
+        const verifyResponse = await fetch('https://localhost:7286/ComfirmEmail', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ code: otp })
+        });
+        
+        const verifyData = await verifyResponse.text();
+        
+        if (verifyData === 'Kích hoạt tài khoản thành công !') {
+            alert('Kích hoạt tài khoản thành công !');
+            const username = localStorage.getItem('username');
+            const password = localStorage.getItem('password');
+            
+            // Fetch for login after successful OTP verification
+            const loginResponse = await fetch('https://localhost:7286/Login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            
+            const loginResult = await loginResponse.json();
+            localStorage.removeItem('username');
+            localStorage.removeItem('password');
+            
+            if (loginResult && loginResult.data && loginResult.data.accessToken) {
+                localStorage.setItem('token', loginResult.data.accessToken);
+                window.location.href = '/FE/Member/HTML/Home.html';
+            } else {
+                message.innerText = 'Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản và mật khẩu.';
+            }
+        } else if (verifyData === 'Mã xác nhận không đúng !') {
+            message.innerText = 'Mã xác nhận không đúng, vui lòng thử lại.';
+        } else if (verifyData === 'Mã xác nhận đã hết hạn !') {
+            message.innerText = 'Mã xác nhận đã hết hạn. Vui lòng yêu cầu mã mới.';
+            document.getElementById('resend').classList.remove('disabled');
+        } else {
+            message.innerText = 'Phản hồi không hợp lệ từ máy chủ.';
+        }
+    } catch (error) {
+        console.error('Lỗi khi gửi yêu cầu xác nhận:', error);
+        message.innerText = 'Đã xảy ra lỗi, vui lòng thử lại.';
+    }
+}
+
+
+        function resendCode() {
+            const Id = getUserIdFromToken();
+            fetch(`https://localhost:7286/ResendOtp${Id}`)
+                .then(response => response.text())
+                .then(data => {
+                    if (data == 'Gủi thành công !') {
+                        alert('Mã xác nhận đã được gửi lại!');
+                        startCountdown(5); // Bắt đầu đếm ngược lại cho 5 phút
+                        document.getElementById('resend').classList.add('disabled');
+                    }
+
+                })
+                .catch(error => {
+                    console.error('Lỗi khi gửi lại mã:', error);
+                    alert('Đã xảy ra lỗi khi gửi lại mã.');
+                });
+        }
+
+        function getUserIdFromToken() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.error('Không tìm thấy token');
+                return null;
+            }
+
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                return payload.Id;
+            } catch (error) {
+                console.error('Lỗi khi giải mã token:', error);
+                return null;
+            }
+        }
+
+        function initializePage() {
+            const userId = getUserIdFromToken();
+            startCountdown(0); // Fallback nếu không có userId
+        }
+
+        // Initialize the page
+        initializePage();
+    </script>
+</body>
+
+</html>

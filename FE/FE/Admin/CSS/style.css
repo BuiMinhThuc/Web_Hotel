@@ -1,0 +1,476 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://res.cloudinary.com/dldk6cqnw/image/upload/v1730953894/h4_szpops.webp');
+    background-size: cover;
+ 
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+
+
+    
+}
+.tab-button i {
+    margin-right: 8px; /* Adjust space between icon and text */
+}
+
+.main-content {
+    padding: 40px; /* Tăng khoảng cách padding để dễ nhìn hơn */
+    background-color: #f4f4f4;
+    margin-left: 260px; /* Điều chỉnh theo chiều rộng của sidebar */
+}
+
+.table-container {
+    padding: 25px;
+    margin-top: 20px; /* Thêm khoảng cách phía trên bảng */
+}
+
+.table th, .table td {
+    padding: 15px; /* Tăng padding bên trong các ô của bảng */
+}
+.sidebar {
+    width: 230px; /* Sidebar hẹp hơn một chút */
+}
+
+.main-content {
+    margin-left: 230px; /* Điều chỉnh theo chiều rộng của sidebar */
+}.btn-edit, .btn-delete {
+    padding: 8px 16px;
+    font-size: 14px;
+    margin: 5px; /* Thêm khoảng cách giữa các nút */
+}
+
+.btn-edit:hover {
+    background-color: #138496; /* Tối màu hơn một chút khi hover */
+}
+
+.btn-delete:hover {
+    background-color: #c82333; /* Tối màu hơn một chút khi hover */
+}.table-rounded {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ */
+}@media (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* Sidebar hẹp hơn trên màn hình nhỏ */
+    }
+
+    .main-content {
+        margin-left: 200px; /* Điều chỉnh theo chiều rộng của sidebar */
+    }
+
+    .search-bar {
+        width: 100%; /* Chiều rộng đầy đủ trên thiết bị di động */
+    }
+
+    .pagination-controls {
+        flex-direction: column; /* Xếp chồng phân trang theo chiều dọc trên màn hình nhỏ */
+        align-items: center;
+    }
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    position: fixed; /* Đặt sidebar cố định */
+    top: 0; /* Căn chỉnh từ đầu trang */
+    left: 0; /* Căn chỉnh bên trái */
+    z-index: 1000; /* Đảm bảo nó nằm trên các phần tử khác */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar h3 {
+    margin: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+.sidebar li:hover {
+    background: #495057;
+}
+
+.sidebar li.active {
+    background: #17a2b8;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px; /* Tạo khoảng trống tương ứng với chiều rộng sidebar */
+    background-color: #f4f4f4;
+}
+.btN-pre{
+    width: 20% !important;
+}
+.container-btn{
+    flex-direction: row-reverse
+}
+.pageCSS{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#section-title {
+    margin-bottom: 50px;
+    color: #333;
+}
+#section-title-Service {
+
+    color: #333;
+}
+/* Container chứa các nút */
+.select-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Đặt khoảng cách giữa các phần tử trái và phải */
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Màu nền cho khối chứa nút */
+  }
+  
+  /* Nút bên trái */
+  .select-button > button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none; /* Bỏ viền */
+    border-radius: 20px; /* Bo góc tròn cho các nút */
+    background-color: #1E90FF; /* Màu nền xanh */
+    color: white; /* Màu chữ trắng */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển đổi khi hover */
+  }
+  
+  .select-button > button:hover {
+    background-color: #4682B4; /* Đổi màu khi hover */
+  }
+  
+  /* Nút bên phải */
+  .select-button-child {
+    margin-left: auto; /* Đẩy khối nút "Thêm" sang bên phải */
+  }
+  
+  .select-button-child > button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #FF6347; /* Màu nền đỏ nhẹ */
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .select-button-child > button:hover {
+    background-color: #FF4500; /* Đổi màu khi hover */
+  }
+  
+  /* Bảng danh sách dịch vụ */
+  .table-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px; /* Bo góc cho bảng */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  }
+  
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse; /* Bỏ khoảng cách giữa các ô */
+  }
+  
+  .table-container th, .table-container td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .table-container th {
+    background-color: #333; /* Màu nền cho tiêu đề bảng */
+    color: white; /* Màu chữ trắng */
+    border-radius: 5px; /* Bo góc nhẹ cho tiêu đề */
+  }
+  
+  .table-container td {
+    background-color: #f9f9f9; /* Màu nền nhẹ cho các ô */
+    border-bottom: 1px solid #ddd; /* Viền dưới cho các ô */
+  }
+  
+ 
+  
+ 
+  
+  
+  
+
+.tab-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+    display: none; /* Ẩn tất cả các tab */
+}
+
+.tab.active {
+    display: block; /* Hiển thị tab đang hoạt động */
+
+    width: 1450px;
+}
+.btn2 {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid #fefefe;
+    text-transform: uppercase;
+    color: #fefefe;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  
+  .btn2::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - -2px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+  
+  .btn2::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - 50px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+  
+  .btn2:hover::before {
+    transform: translateY(-25px);
+    height: 0;
+  }
+  
+  .btn2:hover::after {
+    transform: scaleX(0);
+    transition-delay: 0.15s;
+  }
+  
+  .btn2:hover {
+    border: 2px solid #fefefe;
+  }
+  
+  .btn2 span {
+    position: relative;
+    z-index: 3;
+  }
+  
+  button2 {
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+  }
+  /* Styles for buttons */
+.btn-edit {
+    background-color: #17a2b8;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+}
+
+.btn-delete {
+    background-color: #de5264;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn-deletebillservice {
+    background-color: #de5264;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color:#f4f4f4;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn-deletebillservice:hover {
+    background-color: #c82333; /* Màu nền khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+}
+.btn-delete:hover {
+    background-color: #c82333; /* Màu nền khi hover */
+    transform: scale(1.05); /* Hiệu ứng phóng to khi hover */
+}
+.table td, .table th {
+    text-align: center; /* Căn giữa văn bản theo chiều ngang */
+    vertical-align: middle; /* Căn giữa văn bản theo chiều dọc */
+}
+table{
+    background-color: #f4f4f4;
+}
+
+
+.table-rounded {
+    border-radius: 15px;
+    overflow: hidden; /* Đảm bảo không tràn viền */
+}
+.pagination {
+    margin-top: 20px;
+}
+
+.page-item.active .page-link {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.page-item .page-link {
+    color: #343a40;
+}
+
+.page-item .page-link:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+.search-bar {
+    margin-bottom: 20px; /* Khoảng cách giữa thanh tìm kiếm và bảng */
+    width: 300px; /* Độ rộng của thanh tìm kiếm */
+}
+
+.search-bar input {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+/* Định dạng thanh phân trang */
+.pagination {
+    display: inline-flex; /* Hiển thị các nút dưới dạng hàng ngang */
+    list-style-type: none; /* Loại bỏ dấu chấm của danh sách */
+    padding: 0;
+    margin: 0;
+    border-radius: 5px; /* Bo góc cho toàn bộ thanh phân trang */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Tạo bóng nhẹ */
+}
+
+/* Căn phân trang về góc phải */
+.pagination-container {
+    display: flex;
+    justify-content: flex-end; /* Căn về góc phải */
+    margin-top: 20px;
+}
+
+/* Định dạng cho từng nút trong thanh phân trang */
+.pagination li {
+    border: 1px solid #ddd; /* Đường viền giữa các nút */
+    margin: 0 2px; /* Khoảng cách giữa các nút */
+}
+
+.pagination li a {
+    display: block;
+    padding: 8px 12px; /* Độ rộng và chiều cao cho nút */
+    color: #007bff; /* Màu chữ */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    font-weight: bold; /* Chữ đậm */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi */
+}
+
+/* Định dạng cho nút hiện tại */
+.pagination li.active a {
+    background-color: #007bff; /* Màu nền của nút đang chọn */
+    color: white; /* Màu chữ khi đang chọn */
+    border: 1px solid #007bff;
+}
+
+/* Hiệu ứng hover cho các nút */
+.pagination li a:hover {
+    background-color: #f2f2f2; /* Màu nền khi hover */
+    color: #0056b3; /* Màu chữ khi hover */
+}
+
+/* Định dạng cho nút đầu và cuối (Trang trước và Trang sau) */
+.pagination li a[aria-label="First"],
+.pagination li a[aria-label="Last"] {
+    font-size: 10px;
+    padding: 8px 16px;
+}
+
+/* Nút phân trang bị vô hiệu hóa */
+.pagination li.disabled a {
+    color: #ccc; /* Màu chữ khi nút bị vô hiệu hóa */
+    pointer-events: none; /* Không thể bấm */
+}
+
+.chart-container {
+    width: 49vw; /* Chiều rộng của biểu đồ */
+    height: 57vh; /* Chiều cao của biểu đồ */
+    margin: auto;
+    margin-left: 0; /* Đặt phần tử sát bên trái */
+}
+
+
+/* Định dạng nút sửa và xóa để giống với bảng đặt phòng */
+.btn-edit, .btn-delete {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+}
+
+.btn-edit:hover {
+    background-color: #138496;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
