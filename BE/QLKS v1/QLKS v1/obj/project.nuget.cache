@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ky5BKVIoAVxGQEUtw5aZjk2k8Y/fojc159VciYWX0sm7YiZfNvuXSENf9H+evtjDJQtRTM2inOdGsR5563dTbA==",
+  "dgSpecHash": "2EYOifKTqsE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\buimi\\Documents\\CODE\\C#\\Tự Học\\QLKS v1\\QLKS v1\\QLKS v1.csproj",
+  "projectFilePath": "C:\\Users\\buimi\\Documents\\Đồ án tốt nghiệp\\Chương trình\\BE\\QLKS v1\\QLKS v1\\QLKS v1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\buimi\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\buimi\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

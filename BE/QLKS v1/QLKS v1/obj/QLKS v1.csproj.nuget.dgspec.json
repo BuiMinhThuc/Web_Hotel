@@ -1,22 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\buimi\\Documents\\CODE\\C#\\Tự Học\\QLKS v1\\QLKS v1\\QLKS v1.csproj": {}
+    "C:\\Users\\buimi\\Documents\\Đồ án tốt nghiệp\\Chương trình\\BE\\QLKS v1\\QLKS v1\\QLKS v1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\buimi\\Documents\\CODE\\C#\\Tự Học\\QLKS v1\\QLKS v1\\QLKS v1.csproj": {
+    "C:\\Users\\buimi\\Documents\\Đồ án tốt nghiệp\\Chương trình\\BE\\QLKS v1\\QLKS v1\\QLKS v1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\buimi\\Documents\\CODE\\C#\\Tự Học\\QLKS v1\\QLKS v1\\QLKS v1.csproj",
+        "projectUniqueName": "C:\\Users\\buimi\\Documents\\Đồ án tốt nghiệp\\Chương trình\\BE\\QLKS v1\\QLKS v1\\QLKS v1.csproj",
         "projectName": "QLKS v1",
-        "projectPath": "C:\\Users\\buimi\\Documents\\CODE\\C#\\Tự Học\\QLKS v1\\QLKS v1\\QLKS v1.csproj",
+        "projectPath": "C:\\Users\\buimi\\Documents\\Đồ án tốt nghiệp\\Chương trình\\BE\\QLKS v1\\QLKS v1\\QLKS v1.csproj",
         "packagesPath": "C:\\Users\\buimi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\buimi\\Documents\\CODE\\C#\\Tự Học\\QLKS v1\\QLKS v1\\obj\\",
+        "outputPath": "C:\\Users\\buimi\\Documents\\Đồ án tốt nghiệp\\Chương trình\\BE\\QLKS v1\\QLKS v1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+          "C:\\Users\\buimi\\NuGet.Config",
           "C:\\Users\\buimi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -38,7 +39,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -128,7 +135,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,1659 @@
+[
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "AdminGetChoonseTYpeService",
+    "RelativePath": "api/Controller_Admin/AdminGetChoonseTYpeService",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateEquipment",
+    "RelativePath": "api/Controller_Admin/CreateEquipment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_Equipment.Request_CreateEquipment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateFeedback",
+    "RelativePath": "api/Controller_Admin/CreateFeedback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_CustomerFeedBack.Request_CreateFeedBack",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateImgRoom",
+    "RelativePath": "api/Controller_Admin/CreateImgRoom",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoomId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UrlImg",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateNews",
+    "RelativePath": "api/Controller_Admin/CreateNews",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Content",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UrlImg",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreatePromotion",
+    "RelativePath": "api/Controller_Admin/CreatePromotion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Promotion.Request_CreatePromotion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateRoom",
+    "RelativePath": "api/Controller_Admin/CreateRoom",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Room.Request_CreateRoom",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateRoomType",
+    "RelativePath": "api/Controller_Admin/CreateRoomType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_RoomType.Request_CreateRoomType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateStaffShift",
+    "RelativePath": "api/Controller_Admin/CreateStaffShift",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_StaffShift.Request_CreateStaffShift",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "CreateTypeService",
+    "RelativePath": "api/Controller_Admin/CreateTypeService",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_TypeService.Request_CreateServiceType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteEquipment",
+    "RelativePath": "api/Controller_Admin/DeleteEquipment",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteImgRoom",
+    "RelativePath": "api/Controller_Admin/DeleteImgRoom",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteNews",
+    "RelativePath": "api/Controller_Admin/DeleteNews",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeletePromotion",
+    "RelativePath": "api/Controller_Admin/DeletePromotion",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteRoom",
+    "RelativePath": "api/Controller_Admin/DeleteRoom",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteRoomType",
+    "RelativePath": "api/Controller_Admin/DeleteRoomType",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteStaff",
+    "RelativePath": "api/Controller_Admin/DeleteStaff",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteStaffShift",
+    "RelativePath": "api/Controller_Admin/DeleteStaffShift",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteTypeService",
+    "RelativePath": "api/Controller_Admin/DeleteTypeService",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "DeleteUser",
+    "RelativePath": "api/Controller_Admin/DeleteUser",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetAdultinHotel",
+    "RelativePath": "api/Controller_Admin/GetAdultinHotel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetChildinHotel",
+    "RelativePath": "api/Controller_Admin/GetChildinHotel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetChoonseTYpeService",
+    "RelativePath": "api/Controller_Admin/GetChoonseTYpeService",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetEquipmentbyRoomId",
+    "RelativePath": "api/Controller_Admin/GetEquipmentbyRoomId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoomId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "getlisShowCustomer",
+    "RelativePath": "api/Controller_Admin/getlisShowCustomer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "getListBookingBillService",
+    "RelativePath": "api/Controller_Admin/getListBookingBillService",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "User",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetListFeedback",
+    "RelativePath": "api/Controller_Admin/GetListFeedback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetListImgRoom",
+    "RelativePath": "api/Controller_Admin/GetListImgRoom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetlistRoomType",
+    "RelativePath": "api/Controller_Admin/GetlistRoomType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetNumTypeRoonAloneActiveHotel",
+    "RelativePath": "api/Controller_Admin/GetNumTypeRoonAloneActiveHotel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetNumTypeRoonDoubleActiveHotel",
+    "RelativePath": "api/Controller_Admin/GetNumTypeRoonDoubleActiveHotel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "GetNumTypeRoonVipActiveHotel",
+    "RelativePath": "api/Controller_Admin/GetNumTypeRoonVipActiveHotel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateEquipment",
+    "RelativePath": "api/Controller_Admin/UpdateEquipment",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_Equipment.Request_UpdateEquipment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateImgRoom",
+    "RelativePath": "api/Controller_Admin/UpdateImgRoom",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RoomId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UrlImg",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateNews",
+    "RelativePath": "api/Controller_Admin/UpdateNews",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Content",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UrlImg",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdatePromotion",
+    "RelativePath": "api/Controller_Admin/UpdatePromotion",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Promotion.Request_UpdatePromotion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateRoom",
+    "RelativePath": "api/Controller_Admin/UpdateRoom",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Room.Request_UpdateRoom",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateRoomType",
+    "RelativePath": "api/Controller_Admin/UpdateRoomType",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_RoomType.Request_UpdateRoomType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateStaff",
+    "RelativePath": "api/Controller_Admin/UpdateStaff",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Staff.Request_UpdateStaff",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateStaffShift",
+    "RelativePath": "api/Controller_Admin/UpdateStaffShift",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_StaffShift.Request_UpdateStaffShift",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateTypeService",
+    "RelativePath": "api/Controller_Admin/UpdateTypeService",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "QLKS_v1.Payload.Requests.Request_TypeService.Request_UpdateTypeService",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Admin",
+    "Method": "UpdateUserf",
+    "RelativePath": "api/Controller_Admin/UpdateUserf",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NumberPhone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UrlAvatar",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RoleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsActice",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "PostBooking",
+    "RelativePath": "api/Controller_Member/CreateBooking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Booking.Request_CreateBooking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "PostBookingAdmin",
+    "RelativePath": "api/Controller_Member/CreateBookingAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_BookingRoom.Request_AdminBooking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "PostBookingService",
+    "RelativePath": "api/Controller_Member/CreateBookingService",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_BookingService.Request_CreateBookingService",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "CreatePDF",
+    "RelativePath": "api/Controller_Member/CreatePDF",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "billID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "CreateService",
+    "RelativePath": "api/Controller_Member/CreateService",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Service.Request_CreateService",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "DeleteBillService",
+    "RelativePath": "api/Controller_Member/DeleteBillService",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "service",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "DeleteBooking",
+    "RelativePath": "api/Controller_Member/DeleteBooking",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "DeleteService",
+    "RelativePath": "api/Controller_Member/DeleteService",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetAllCustomer",
+    "RelativePath": "api/Controller_Member/getAllCustomer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetAllRoom",
+    "RelativePath": "api/Controller_Member/GetAllRoom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetAllService",
+    "RelativePath": "api/Controller_Member/getAllService",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListBill",
+    "RelativePath": "api/Controller_Member/getListBill",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListBillService",
+    "RelativePath": "api/Controller_Member/GetListBillService",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListBillService",
+    "RelativePath": "api/Controller_Member/GetListBillServiceForCase",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Type",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetBooking",
+    "RelativePath": "api/Controller_Member/GetListBooking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListChooseRooom",
+    "RelativePath": "api/Controller_Member/GetListChooseRoom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListChooseService",
+    "RelativePath": "api/Controller_Member/GetListChooseService",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListNew",
+    "RelativePath": "api/Controller_Member/GetListNews",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListPromotion",
+    "RelativePath": "api/Controller_Member/getListPromotion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListPromotionFull",
+    "RelativePath": "api/Controller_Member/getListPromotionFull",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListRoom",
+    "RelativePath": "api/Controller_Member/GetListRoom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListRoomImage",
+    "RelativePath": "api/Controller_Member/GetListRoomImage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListRoomTypeName",
+    "RelativePath": "api/Controller_Member/getListRoomTypeName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "getListStaff",
+    "RelativePath": "api/Controller_Member/getListStaff",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "getListStaffShift",
+    "RelativePath": "api/Controller_Member/getListStaffShift",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetRoomforCase",
+    "RelativePath": "api/Controller_Member/getRoomforCase",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoomName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListRoomNull",
+    "RelativePath": "api/Controller_Member/getRoomNull",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoomName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetListRoomNullFull",
+    "RelativePath": "api/Controller_Member/getRoomNullfull",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoomName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckIn",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckOut",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "getRoomTypeHot",
+    "RelativePath": "api/Controller_Member/getRoomTypeHot",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "GetViewRoom",
+    "RelativePath": "api/Controller_Member/getviewRoom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoomName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "PayCheckOutBill",
+    "RelativePath": "api/Controller_Member/PayCheckOutBill",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "billId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "PrintBillPdfPDF",
+    "RelativePath": "api/Controller_Member/PrintBillPdfPDF",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "billID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "Return",
+    "RelativePath": "api/Controller_Member/Return",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "TaoDuongDanThanhToan",
+    "RelativePath": "api/Controller_Member/TaoDuongDanThanhToan/{hoaDonId}/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hoaDonId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "PutBooking",
+    "RelativePath": "api/Controller_Member/UpdateBooking",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Booking.Request_UpdateBooking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "PutBookingService",
+    "RelativePath": "api/Controller_Member/updateBookingService/{billServiceId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "billServiceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Member",
+    "Method": "UpdateService",
+    "RelativePath": "api/Controller_Member/UpdateService",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_Service.Request_UpdateService",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "ChangePasswordAsync",
+    "RelativePath": "Change_Pass",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_User.Request_ChangePassword",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "ChangePassByUser",
+    "RelativePath": "ChangePassByUser",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_User.Request_ChangePassWordByUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "ComfirmEmail",
+    "RelativePath": "ComfirmEmail",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_User.Request_ComfirmEmail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "GetOtpAsync",
+    "RelativePath": "Get-Otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_User.Request_ForgotAccount",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "GetListUser",
+    "RelativePath": "GetListUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "getUrlAvt",
+    "RelativePath": "GetUrlAvt{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "getuserbyId",
+    "RelativePath": "GetUserbyId{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "Login",
+    "RelativePath": "Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "QLKS_v1.Payload.Requests.Request_User.Request_Login",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "ReGisTer",
+    "RelativePath": "Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NumberPhone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UrlAvt",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "RenewToken",
+    "RelativePath": "Renew-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "QLKS_v1.Payload.DTOs.DTO_Token",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "ResendOtp",
+    "RelativePath": "ResendOtp{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKS_v1.Controllers.Controller_Authen",
+    "Method": "UpdateUserToCustomer",
+    "RelativePath": "Update{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NumberPhone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UrlAvatar",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
